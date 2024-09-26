@@ -21,19 +21,19 @@ This projct is of *interest to me* because I frequently shop at Tim Horton's and
 ***Classes and their Fields:***
 
 1. Restaurant 
-    a. String name 
-    b. ArrayList<Food> menuItems
-    c. int userPoints
-    d. Cart cart
+    - String name 
+    - ArrayList<Food> menuItems
+    - int userPoints
+    - Cart cart
 
 2. Food 
-    a. int costInPoints
-    b. double costInMoney
-    c. String name 
-    d. int worthPonints
+    - int costInPoints
+    - double costInMoney
+    - String name 
+    - int worthPonints
 
 3. Cart (includes most calculation methods)
-    a. ArrayList<Food> userItems
+    - ArrayList<Food> userItems
 
 In this case X would be Food (menu items) that the user adds to Cart (Y).
 
