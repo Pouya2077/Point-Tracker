@@ -8,16 +8,6 @@ This *application is intended for* Tim Horton's customers to optimize their orde
 
 This projct is of *interest to me* because I frequently shop at Tim Horton's and it would be useful for me to keep track of the points I have and earn for the menu items I buy. Likewise, If I can *run calculations* on item's in my cart to **optimize** what I order I can shop more efficiently at Tim Horton's. 
 
-***Services of Application:***
-
-- Add menu items from restaurant to your cart
-- Search for an item in your cart by points, name, or price 
-- Calculate total points of everything in your cart
-- Calculate total price of everything in your cart
-- Specify what you spend (money or points) to buy what is in your cart 
-- Add points to total points for each item you purchase with money 
-- Calculate and print which menu items user can purchase for "x" points in cart
-
 ***Classes and their Fields:***
 
 1. Restaurant 
@@ -30,7 +20,7 @@ This projct is of *interest to me* because I frequently shop at Tim Horton's and
     - int costInPoints
     - double costInMoney
     - String name 
-    - int worthPonints
+    - int worthPoints
 
 3. Cart (includes most calculation methods)
     - ArrayList<Food> userItems
@@ -39,13 +29,11 @@ In this case X would be Food (menu items) that the user adds to Cart (Y).
 
 ## User Stories:
 
-1. As a user, I want to be able to add menu items to my cart. 
+1. As a user, I want to be able to add menu items and remove menu items from my cart.
 2. As a user, I want to see the names of all menu items in my cart. 
 3. As a user, I want to calculate the total points and price the items in my cart are worth. 
-4. As a user, I want to see the names of all menu items at the restaurant. 
-5. As a user, I want to see a list of menu items I can purchase with my current points. 
-6. As a user, I want to buy items in my cart with the money/points I give the application. 
-7. As a user, I want to see if an item with "___" name is in my cart. 
+4. As a user, I want to see a list of menu items I can purchase with my current points. 
+5. As a user, I want to buy items in my cart with the money/points I give the application. 
 
 
 
