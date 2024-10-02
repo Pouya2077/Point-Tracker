@@ -3,42 +3,45 @@ package model;
 import java.util.ArrayList;
 
 // Represents a cart class with a list
-// of food items put in the cart by 
-// the user and has operations to run
-// on cart items
+// of food items put in the cart by the user 
 public class Cart {
+    private ArrayList<Food> cart;
 
     // MODIFIES: this
     // EFFECTS:  initializes a Cart with an 
     //           empty list of food items
     public Cart() {
-        // stub
+        this.cart = new ArrayList<Food>();
     }
 
     // EFFECTS: returns the ArrayList of Food that 
     //          is in the cart
     public ArrayList<Food> getCart() {
-        return new ArrayList<Food>(); // stub
+        return this.cart;
     }
 
     // MODIFIES: this
     // EFFECTS:  adds the food given by the 
     //           user to the back of the cart
     public void addFood(Food food) {
-        // stub
+        cart.add(food);
     }
 
     // MODIFIES: this 
     // EFFECTS:  removes the food specified by 
     //           the user from the cart
     public void removeFood(Food food) {
-        // stub
+        cart.remove(food);
     }
 
     // EFFECTS: prints a list of the names of 
     //          each food item in the cart
-    public ArrayList<String> foodNames() {
-        return new ArrayList<String>(); // stub
+    public ArrayList<String> getFoodNames() {
+        ArrayList<String> acc = new ArrayList<String>();
+        for(Food f: cart) {
+            acc.add(f.getName());
+        }
+        return acc; 
     }
 
     // EFFECTS: returns the total points everything

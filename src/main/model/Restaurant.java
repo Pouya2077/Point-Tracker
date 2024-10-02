@@ -10,6 +10,7 @@ public class Restaurant {
     private ArrayList<Food> menu;
     private int userPoints;
     private Cart cart;
+    
 
     // MODIFIES: this
     // EFFECTS:  initializes the restaurant with a name

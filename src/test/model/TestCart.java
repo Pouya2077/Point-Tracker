@@ -31,7 +31,7 @@ public class TestCart {
     void testAddOneFood() {
         testCart.addFood(f1);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertEquals(1, cart.size());
         assertEquals(1, foodNames.size());
 
@@ -42,7 +42,7 @@ public class TestCart {
         testCart.addFood(f1);
         testCart.addFood(f2);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertEquals(2, cart.size());
         assertEquals(2, foodNames.size());
     }
@@ -51,13 +51,13 @@ public class TestCart {
     void removeOneFood() {
         testCart.addFood(f1);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertEquals(1, cart.size());
         assertEquals(1, foodNames.size());
 
         testCart.removeFood(f1);
         cart = testCart.getCart();
-        foodNames = testCart.foodNames();
+        foodNames = testCart.getFoodNames();
         assertEquals(0, cart.size());
         assertEquals(0, foodNames.size());
     }
@@ -67,14 +67,14 @@ public class TestCart {
         testCart.addFood(f1);
         testCart.addFood(f2);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertEquals(2, cart.size());
         assertEquals(2, foodNames.size());
 
         testCart.removeFood(f1);
         testCart.removeFood(f2);
         cart = testCart.getCart();
-        foodNames = testCart.foodNames();
+        foodNames = testCart.getFoodNames();
         assertEquals(0, cart.size());
         assertEquals(0, foodNames.size());
 
@@ -86,7 +86,7 @@ public class TestCart {
         testCart.addFood(f1);
         testCart.removeFood(f2);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertEquals(1, cart.size());
         assertEquals(1, foodNames.size());
 
@@ -97,7 +97,7 @@ public class TestCart {
     void removeFromEmptyList() {
         testCart.removeFood(f1);
         ArrayList<Food> cart = testCart.getCart();
-        ArrayList<String> foodNames = testCart.foodNames();
+        ArrayList<String> foodNames = testCart.getFoodNames();
         assertTrue(cart.isEmpty());
         assertTrue(foodNames.isEmpty());
     }
