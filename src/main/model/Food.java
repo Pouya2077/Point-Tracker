@@ -5,6 +5,10 @@ package model;
 // a name, and how many points it is worth 
 // when bought with money
 public class Food {
+    private String name;
+    private int costInPoints;
+    private double costInMoney;
+    private int pointsWorth;
 
     // MODIFIES: this
     // EFFECTS: initializes a menu item with
@@ -13,22 +17,25 @@ public class Food {
     // points it is worth when
     // bought with money
     public Food(String name, int pointsToBuy, double money, int pointsWorth) {
-        // stub
+        this.name = name;
+        this.costInPoints = pointsToBuy;
+        this.costInMoney = money;
+        this.pointsWorth = pointsWorth;
     }
 
     public String getName() {
-        return ""; // stub
+        return this.name;
     }
 
     public int getCostInPoints() {
-        return 0; // stub
+        return this.costInPoints; 
     }
 
     public double getCostInMoney() {
-        return 0; // stub
+        return this.costInMoney;
     }
 
     public int getPointsWorth() {
-        return 0; // stub
+        return this.pointsWorth;
     }
 }
