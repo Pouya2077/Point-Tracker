@@ -48,7 +48,7 @@ public class TestCart {
     }
 
     @Test 
-    void removeOneFood() {
+    void testRemoveOneFood() {
         testCart.addFood(f1);
         ArrayList<Food> cart = testCart.getCart();
         ArrayList<String> foodNames = testCart.getFoodNames();
@@ -63,7 +63,7 @@ public class TestCart {
     }
 
     @Test 
-    void removeMultipleFood() {
+    void testRemoveMultipleFood() {
         testCart.addFood(f1);
         testCart.addFood(f2);
         ArrayList<Food> cart = testCart.getCart();
@@ -82,7 +82,7 @@ public class TestCart {
     }
 
     @Test 
-    void removeNothingFromCart() {
+    void testRemoveNothingFromCart() {
         testCart.addFood(f1);
         testCart.removeFood(f2);
         ArrayList<Food> cart = testCart.getCart();
@@ -94,12 +94,28 @@ public class TestCart {
     }
 
     @Test 
-    void removeFromEmptyList() {
+    void testRemoveFromEmptyList() {
         testCart.removeFood(f1);
         ArrayList<Food> cart = testCart.getCart();
         ArrayList<String> foodNames = testCart.getFoodNames();
         assertTrue(cart.isEmpty());
         assertTrue(foodNames.isEmpty());
     }
+
+    @Test 
+    void testCalculateTotalPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        assertEquals(6, testCart.totalPoints());
+    }
+
+    @Test 
+    void testCalculateTotalCost() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        assertEquals(4.8, testCart.totalMoney());
+    }
+
+     
 
 }
