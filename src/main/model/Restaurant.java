@@ -7,9 +7,10 @@ import java.util.ArrayList;
 // at the restaurant, and a cart with their menu items
 public class Restaurant {
 
-    // EFFECTS: initializes the restaurant with a name
-    //          zero user points, list of menu items, 
-    //          and an empty cart
+    // MODIFIES: this
+    // EFFECTS:  initializes the restaurant with a name
+    //           zero user points, list of menu items, 
+    //           and an empty cart
     public Restaurant() {
         // stub
     }
