@@ -15,9 +15,9 @@ public class Cart {
         // stub
     }
 
-    // EFFECTS: returns the list of Food that is 
-    //          in the cart
-    public ArrayList<Food> getCartList() {
+    // EFFECTS: returns the ArrayList of Food that 
+    //          is in the cart
+    public ArrayList<Food> getCart() {
         return new ArrayList<Food>(); // stub
     }
 

@@ -12,8 +12,7 @@ public class Food {
     // price in user points, and how many
     // points it is worth when
     // bought with money
-    public Food(String name, int pointsToBuy,
-            double money, int pointsWorth) {
+    public Food(String name, int pointsToBuy, double money, int pointsWorth) {
         // stub
     }
 
