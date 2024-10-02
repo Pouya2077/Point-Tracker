@@ -27,8 +27,10 @@ public class Restaurant {
         return 0; //stub
     }
 
-    public Cart getCart() {
-        return new Cart();
+    // EFFECTS: this will return the list of Food which 
+    //          is currently in the cart
+    public ArrayList<Food> getCart() {
+        return new ArrayList<Food>(); // stub
     }
 
     public void setUserPoints() {
