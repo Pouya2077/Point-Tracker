@@ -47,13 +47,21 @@ public class Cart {
     // EFFECTS: returns the total points everything
     //          in your cart is worth
     public int totalPoints() {
-        return 0; // stub
+        int acc = 0;
+        for(Food f: cart) {
+            acc += f.getPointsWorth();
+        }
+        return acc;
     }
 
     // EFFECTS: returns the total price everything
     //          in your cart is worth
     public double totalMoney() {
-        return 0; //stub
+        double acc = 0;
+        for(Food f: cart) {
+            acc += f.getCostInMoney();
+        }
+        return acc;
     }
 
     // EFFECTS: prints a list of the names of 
