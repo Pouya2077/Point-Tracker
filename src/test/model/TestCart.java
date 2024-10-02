@@ -116,6 +116,24 @@ public class TestCart {
         assertEquals(4.8, testCart.totalMoney());
     }
 
+    @Test 
+    void testCanPurchaseNoneWithPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<String> canPurhcase = testCart.canPurchaseList(0);
+        assertEquals(0, canPurhcase.size());
+    }
+
+    @Test 
+    void testCanPurchaseOneWithPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<String> canPurhcase = testCart.canPurchaseList(2);
+        assertEquals(1, canPurhcase.size());
+    }
+
+    // add test case for we can purchase multiple items with points
+
      
 
 }
