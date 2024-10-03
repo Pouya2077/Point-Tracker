@@ -141,6 +141,16 @@ public class TestCart {
 
     }
 
+    @Test 
+    void testCanPurchaseWithDuplicate() {
+        testCart.addFood(f1);
+        testCart.addFood(f1);
+        ArrayList<String> canPurchase = testCart.canPurchaseList(14);
+        assertEquals(1, canPurchase.size());
+    }
+
+    
+
      
 
 }

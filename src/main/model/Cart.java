@@ -68,7 +68,14 @@ public class Cart {
     //          each food item user can purchase
     //          with their current points
     public ArrayList<String> canPurchaseList(int userPoints) {
-        return new ArrayList<String>(); // stub
+        ArrayList<String> canPurchase = new ArrayList<String>();
+        for(Food f: cart) {
+            if(f.getCostInPoints() <= userPoints && 
+            !canPurchase.contains(f.getName())) {
+                canPurchase.add(f.getName());
+            }
+        }
+        return canPurchase;
     }
 
     // EFFECTS:  purchases items in your cart with the 
