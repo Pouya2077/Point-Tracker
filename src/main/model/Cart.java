@@ -78,15 +78,19 @@ public class Cart {
         return canPurchase;
     }
 
+    // MODIFIES: this
     // EFFECTS:  purchases items in your cart with the 
-    //           points the user specifies, returns the 
+    //           points the user specifies, removes what 
+    //           has been purchased, and returns the 
     //           points the user has left
     public int purchaseWithPoints(int userPoints){ 
         return 0; // stub
     }
 
+    // MODIFIES: this
     // EFFECTS: purchases items in your cart with the 
-    //          money the user specifies, returns the 
+    //          money the user specifies, removes what has 
+    //          been purchased, and returns the 
     //          amount of points the user earned
     public int purchaseWithMoney(double userMoney){
         return 0; // stub

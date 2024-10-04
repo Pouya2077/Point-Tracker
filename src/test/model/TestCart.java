@@ -149,7 +149,52 @@ public class TestCart {
         assertEquals(1, canPurchase.size());
     }
 
-    
+    @Test 
+    void testPurchaseOneWithPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithPoints(10);
+        assertEquals(0, checkPoints);
+        cart = testCart.getCart();
+        assertEquals(1, cart.size());
+
+    }
+
+    @Test 
+    void testPurchaseMultipleWithPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithPoints(23);
+        assertEquals(1, checkPoints);
+        cart = testCart.getCart(); 
+        assertEquals(0, cart.size());
+    }
+
+    @Test 
+    void testPurchaseNoneWithPoints() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithPoints(5);
+        assertEquals(5, checkPoints);
+        cart = testCart.getCart();
+        assertEquals(2, cart.size());
+    }
+
+    @Test 
+    void testPurchaseWhenNoneInCart() {
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(0, cart.size());
+        int checkPoints = testCart.purchaseWithPoints(30);
+        assertEquals(30, checkPoints);
+        cart = testCart.getCart();
+        assertEquals(0, cart.size());
+    }
 
      
 
