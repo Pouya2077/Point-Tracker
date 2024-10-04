@@ -101,9 +101,9 @@ public class Cart {
 
     // MODIFIES: this
     // EFFECTS: purchases items in your cart with the
-    // money the user specifies, removes what has
-    // been purchased, and returns the
-    // amount of points the user earned
+    // money the user specifies starting from the first, 
+    // removes what has has been purchased and returns
+    // the amount of points the user has earned
     public int purchaseWithMoney(double userMoney) {
         return 0; // stub
     }
