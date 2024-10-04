@@ -80,21 +80,20 @@ public class Cart {
 
     // MODIFIES: this
     // EFFECTS: purchases items in your cart with the
-    // points the user has starting from the first, 
-    // removes what has been purchased and returns
-    // the points the user has left
+    // points the user has starting from the 
+    // first and returns the points the user has left
     public int purchaseWithPoints(int userPoints) {
-        while(userPoints > 0 && !cart.isEmpty()) {
-            Food first = cart.get(0);
-            if (first.getCostInPoints() > userPoints) {
+        for (Food f: cart) {
+            if (userPoints <= 0) {
+                userPoints = 0;
                 break;
-            } else {
-                int subBy = first.getCostInPoints();
+            } else if (userPoints >= f.getCostInPoints()) {
+                int subBy = f.getCostInPoints();
                 userPoints -= subBy;
-                cart.remove(0);
-
+                
             }
         }
+
         return userPoints;
 
     }
@@ -102,8 +101,7 @@ public class Cart {
     // MODIFIES: this
     // EFFECTS: purchases items in your cart with the
     // money the user specifies starting from the first, 
-    // removes what has been purchased, and returns
-    // the amount of points the user has earned
+    // and returns the amount of points the user has earned
     public int purchaseWithMoney(double userMoney) {
         return 0; // stub
     }

@@ -158,7 +158,7 @@ public class TestCart {
         int checkPoints = testCart.purchaseWithPoints(10);
         assertEquals(0, checkPoints);
         cart = testCart.getCart();
-        assertEquals(1, cart.size());
+        assertEquals(2, cart.size());
 
     }
 
@@ -171,7 +171,7 @@ public class TestCart {
         int checkPoints = testCart.purchaseWithPoints(23);
         assertEquals(1, checkPoints);
         cart = testCart.getCart(); 
-        assertEquals(0, cart.size());
+        assertEquals(2, cart.size());
     }
 
     @Test 
