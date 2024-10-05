@@ -38,7 +38,7 @@ public class TestCart {
     }
 
     @Test 
-    void testMultipleFood() {
+    void testAddMultipleFood() {
         testCart.addFood(f1);
         testCart.addFood(f2);
         ArrayList<Food> cart = testCart.getCart();
@@ -56,7 +56,6 @@ public class TestCart {
         assertEquals(1, foodNames.size());
 
         testCart.removeFood(f1);
-        cart = testCart.getCart();
         foodNames = testCart.getFoodNames();
         assertEquals(0, cart.size());
         assertEquals(0, foodNames.size());
@@ -73,7 +72,6 @@ public class TestCart {
 
         testCart.removeFood(f1);
         testCart.removeFood(f2);
-        cart = testCart.getCart();
         foodNames = testCart.getFoodNames();
         assertEquals(0, cart.size());
         assertEquals(0, foodNames.size());
@@ -157,7 +155,6 @@ public class TestCart {
         assertEquals(2, cart.size());
         int checkPoints = testCart.purchaseWithPoints(10);
         assertEquals(0, checkPoints);
-        cart = testCart.getCart();
         assertEquals(2, cart.size());
 
     }
@@ -170,7 +167,6 @@ public class TestCart {
         assertEquals(2, cart.size());
         int checkPoints = testCart.purchaseWithPoints(23);
         assertEquals(1, checkPoints);
-        cart = testCart.getCart(); 
         assertEquals(2, cart.size());
     }
 
@@ -182,19 +178,62 @@ public class TestCart {
         assertEquals(2, cart.size());
         int checkPoints = testCart.purchaseWithPoints(5);
         assertEquals(5, checkPoints);
-        cart = testCart.getCart();
         assertEquals(2, cart.size());
     }
 
     @Test 
-    void testPurchaseWhenNoneInCart() {
+    void testPurchaseWhenNoneInCartPoints() {
         ArrayList<Food> cart = testCart.getCart();
         assertEquals(0, cart.size());
         int checkPoints = testCart.purchaseWithPoints(30);
         assertEquals(30, checkPoints);
-        cart = testCart.getCart();
         assertEquals(0, cart.size());
     }
+
+    @Test 
+    void testPurchaseOneWithMoney() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithMoney(2.3);
+        assertEquals(2, checkPoints);
+        assertEquals(2, cart.size());
+
+    }
+
+    @Test 
+    void testPurchaseMultipleWithMoney() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithMoney(4.8);
+        assertEquals(6, checkPoints);
+        assertEquals(2, cart.size());
+
+    }
+
+    @Test 
+    void testPurchaseNoneWithMoney() {
+        testCart.addFood(f1);
+        testCart.addFood(f2);
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(2, cart.size());
+        int checkPoints = testCart.purchaseWithMoney(1.2);
+        assertEquals(0, checkPoints);
+        assertEquals(2, cart.size());
+    }
+
+    @Test 
+    void testPurchaseWhenNoneInCartMoney() {
+        ArrayList<Food> cart = testCart.getCart();
+        assertEquals(0, cart.size());
+        int checkPoints = testCart.purchaseWithMoney(5.2);
+        assertEquals(0, checkPoints);
+        assertEquals(0, cart.size());
+    }
+
 
    
 
