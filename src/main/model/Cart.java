@@ -103,6 +103,17 @@ public class Cart {
     // money the user specifies starting from the first, 
     // and returns the amount of points the user has earned
     public int purchaseWithMoney(double userMoney) {
-        return 0; // stub
+        int acc = 0;
+        for (Food f: cart) {
+            if (userMoney <= 0) {
+                break;
+            } else if (userMoney >= f.getCostInMoney()) {
+                double subBy = f.getCostInMoney();
+                userMoney -= subBy;
+                acc += f.getPointsWorth();
+            }
+
+        }
+        return acc;
     }
 }
