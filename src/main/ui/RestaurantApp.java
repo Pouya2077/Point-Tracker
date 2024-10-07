@@ -91,8 +91,12 @@ public class RestaurantApp {
     //          gives and adds points of restaurant to how many
     //          points they accumulated from their purchases
     private void buyWithMoney() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buyWithMoney'");
+        System.out.println("How much money would you like to spend?");
+        double userMoney = userInput.nextDouble();
+
+        int pointsEarned = cart.purchaseWithMoney(userMoney);
+        timmies.setUserPoints(pointsEarned);
+        System.out.println("You earned " + pointsEarned + " points!");
     }
 
     // MODIFIES: Cart, Restaurant
