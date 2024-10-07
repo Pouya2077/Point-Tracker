@@ -40,8 +40,6 @@ public class Restaurant {
         return this.userPoints; 
     }
 
-    // EFFECTS: this will return the list of Food which 
-    //          is currently in the cart
     public ArrayList<Food> getCart() {
         return cart.getCart(); 
     }
