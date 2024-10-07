@@ -10,18 +10,18 @@ public class RestaurantApp {
     private Scanner userInput;
 
     // EFFECTS: runs the Restaurant app
+    //          and initializes fields
     public RestaurantApp() {
+        canRun = true;
+        currentCommand = null;
+        userInput = new Scanner(System.in);
+        userInput.useDelimiter("\r?\n|\r");
         runApp();
     }
 
     // EFFECTS: responsible for taking user input
     //          and running the display of the application
     private void runApp() {
-        canRun = true;
-        currentCommand = null;
-        userInput = new Scanner(System.in);
-        userInput.useDelimiter("\r?\n|\r");
-
         while (canRun) {
             welcomeScreen();
             nextLine();
@@ -39,7 +39,79 @@ public class RestaurantApp {
     }
 
     private void processCommand(String currentCommand) {
-        // stub
+        if (currentCommand.equals("m")) {
+            displayMenu();
+        } else if (currentCommand.equals("p")) {
+            displayCurrentPoints();
+        } else if (currentCommand.equals("a")) {
+            addItem();
+        } else if (currentCommand.equals("r")) {
+            removeItem();
+        } else if (currentCommand.equals("v")) {
+            viewCart();
+        } else if (currentCommand.equals("tp")) {
+            cartTotalPoints();
+        } else if (currentCommand.equals("tm")) {
+            cartTotalPrice();
+        } else if (currentCommand.equals("cp")) {
+            cartPurchasables();
+        } else if (currentCommand.equals("bp")) {
+            buyWithPoints();
+        } else if (currentCommand.equals("bm")) {
+            buyWithMoney();
+        } else {
+            System.out.println("That input is invalid, try again...");
+        }
+    }
+
+    private void buyWithMoney() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buyWithMoney'");
+    }
+
+    private void buyWithPoints() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buyWithPoints'");
+    }
+
+    private void cartPurchasables() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'cartPurchasables'");
+    }
+
+    private void cartTotalPrice() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'cartTotalPrice'");
+    }
+
+    private void cartTotalPoints() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'cartTotalPoints'");
+    }
+
+    private void viewCart() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'viewCart'");
+    }
+
+    private void removeItem() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeItem'");
+    }
+
+    private void addItem() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addItem'");
+    }
+
+    private void displayCurrentPoints() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'displayCurrentPoints'");
+    }
+
+    private void displayMenu() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'displayMenu'");
     }
 
     // MODIFIES: this
@@ -70,6 +142,7 @@ public class RestaurantApp {
         System.out.println("bm = Buy items in my cart with money");
     }
 
+    // EFFECTS: prints a simple line in the terminal
     private void line() {
         System.out.println("-----------------------------------");
     }
