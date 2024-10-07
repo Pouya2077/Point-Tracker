@@ -78,17 +78,16 @@ public class RestaurantApp {
     }
 
     // MODIFIES: Cart, Restaurant
-    // EFFECTS: purchases items in cart with the money the user 
-    //          gives and sets points of restaurant to how many
-    //          points they accumulated from their purchases
+    // EFFECTS: purchases items in cart with the money the user
+    // gives and sets points of restaurant to how many
+    // points they accumulated from their purchases
     private void buyWithMoney() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buyWithMoney'");
+        // stub
     }
 
     // MODIFIES: Cart, Restaurant
-    // EFFECTS: purchases items in cart with user's points and 
-    //          sets how many points they have left at the restaurant
+    // EFFECTS: purchases items in cart with user's points and
+    // sets how many points they have left at the restaurant
     private void buyWithPoints() {
         int pointsLeft = cart.purchaseWithPoints(timmies.getUserPoints());
         timmies.setUserPoints(pointsLeft);
@@ -96,10 +95,10 @@ public class RestaurantApp {
     }
 
     // EFFECTS: displays the items in the cart the user can purchase
-    //          with their current points
+    // with their current points
     private void cartPurchasables() {
         ArrayList<String> list = cart.canPurchaseList(timmies.getUserPoints());
-        for (String s: list) {
+        for (String s : list) {
             System.out.println("\n You can purchase:");
             System.out.println("\n " + s + "\n");
         }
@@ -124,9 +123,9 @@ public class RestaurantApp {
             System.out.println("You have nothing in your cart.");
         } else {
             System.out.println("The items in your cart are:\n");
-            for (Food f: list) {
+            for (Food f : list) {
                 System.out.println(f.getName() + "\n");
-    
+
             }
 
         }
@@ -137,9 +136,38 @@ public class RestaurantApp {
         throw new UnsupportedOperationException("Unimplemented method 'removeItem'");
     }
 
+    // MODIFIES: Cart
+    // EFFECTS: asks for the item the user wants to add to their cart
+    // and adds the item to their cart
     private void addItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addItem'");
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("ice capp");
+        list.add("tim bits");
+        list.add("coffee");
+        list.add("bagel");
+        System.out.println("Which menu item would you like to add?");
+        nextLine();
+        while (!list.contains(currentCommand)) {
+            System.out.println("We do not carry that item, please try again.");
+            nextLine();
+        }
+
+        addAppropriate(currentCommand);
+        System.out.println("\nAdded " + currentCommand + "!\n");
+    }
+
+    // MODIFIES: Cart
+    // EFFECTS: adds the item the user wants to their cart
+    private void addAppropriate(String item) {
+        if (item.equals("ice capp")) {
+            cart.addFood(new Food("Ice Capp", 10, 3.5, 5));
+        } else if (item.equals("coffee")) {
+            cart.addFood(new Food("Coffee", 8, 2.5, 4));
+        } else if (item.equals("bagel")) {
+            cart.addFood(new Food("Bagel", 5, 3, 2));
+        } else if (item.equals("tim bits")) {
+            cart.addFood(new Food("Tim Bits", 12, 5.5, 6));
+        }
     }
 
     // EFFECTS: displays the points the user has

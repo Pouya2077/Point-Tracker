@@ -19,7 +19,7 @@ public class Restaurant {
         this.name = "Tim Horton's";
         this.menu = new ArrayList<Food>();
         this.menu.add(new Food("Ice Capp", 10, 3.5, 5));
-        this.menu.add(new Food("Cofeee", 8, 2.5, 4));
+        this.menu.add(new Food("Coffee", 8, 2.5, 4));
         this.menu.add(new Food("Bagel", 5, 3, 2));
         this.menu.add(new Food("Tim Bits", 12, 5.5, 6));
         this.userPoints = 0;
