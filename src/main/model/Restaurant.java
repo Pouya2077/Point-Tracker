@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 // Represents a fast food restaurant with a name,
 // list of menu items, the points the user has
-// at the restaurant, and a cart with their menu items
+// at the restaurant
 public class Restaurant {
     private String name;
     private ArrayList<Food> menu;
     private int userPoints;
-    private Cart cart;
     
 
     // MODIFIES: this
@@ -24,7 +23,6 @@ public class Restaurant {
         this.menu.add(new Food("Bagel", 5, 3, 2));
         this.menu.add(new Food("Tim Bits", 12, 5.5, 6));
         this.userPoints = 0;
-        this.cart = new Cart();
 
     }
 
@@ -38,10 +36,6 @@ public class Restaurant {
 
     public int getUserPoints() {
         return this.userPoints; 
-    }
-
-    public ArrayList<Food> getCart() {
-        return cart.getCart(); 
     }
 
     public void setUserPoints(int points) {

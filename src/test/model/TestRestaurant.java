@@ -19,11 +19,9 @@ public class TestRestaurant {
 
     @Test 
     void testConstructor() {
-        ArrayList<Food> cart = testRestaurant.getCart();
         ArrayList<Food> menu = testRestaurant.getMenuItems();
         assertEquals("Tim Horton's", testRestaurant.getName());
         assertEquals(0, testRestaurant.getUserPoints());
-        assertTrue(cart.isEmpty());
         assertEquals(4, menu.size()); 
     
     }
