@@ -18,6 +18,10 @@ public class RestaurantApp {
     private Restaurant timmies;
     private Cart cart;
     private ArrayList<Food> menu;
+    private Food f1;
+    private Food f2;
+    private Food f3;
+    private Food f4;
 
     // EFFECTS: runs the Restaurant app
     // and initializes fields
@@ -29,6 +33,11 @@ public class RestaurantApp {
         timmies = new Restaurant();
         cart = new Cart();
         menu = timmies.getMenuItems();
+        f1 = new Food("Ice Capp", 10, 3.5, 5);
+        f2 = new Food("Coffee", 8, 2.5, 4);
+        f3 = new Food("Bagel", 5, 3, 2);
+        f4 = new Food("Tim Bits", 12, 5.5, 6);
+
         runApp();
     }
 
@@ -79,8 +88,8 @@ public class RestaurantApp {
 
     // MODIFIES: Cart, Restaurant
     // EFFECTS: purchases items in cart with the money the user
-    // gives and sets points of restaurant to how many
-    // points they accumulated from their purchases
+    //          gives and sets points of restaurant to how many
+    //          points they accumulated from their purchases
     private void buyWithMoney() {
         // stub
     }
@@ -131,9 +140,38 @@ public class RestaurantApp {
         }
     }
 
+    // MODIFIES: Cart
+    // EFFECTS: asks the user what item they want to remove
+    // from the cart and then removes it
     private void removeItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeItem'");
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("ice capp");
+        list.add("tim bits");
+        list.add("coffee");
+        list.add("bagel");
+        System.out.println("Which menu item would you like to remove?");
+        nextLine();
+        while (!list.contains(currentCommand)) {
+            System.out.println("We do not carry that item, please try again.");
+            nextLine();
+        }
+
+        removeAppropriate(currentCommand);
+        System.out.println("\nRemoved " + currentCommand + ".\n");
+    }
+
+    // MODIFIES: Cart
+    // EFFECTS: removes the item the user wants from the cart
+    private void removeAppropriate(String item) {
+        if (item.equals("ice capp")) {
+            cart.removeFood(f1);
+        } else if (item.equals("coffee")) {
+            cart.removeFood(f2);
+        } else if (item.equals("bagel")) {
+            cart.removeFood(f3);
+        } else if (item.equals("tim bits")) {
+            cart.removeFood(f4);
+        }
     }
 
     // MODIFIES: Cart
@@ -160,13 +198,13 @@ public class RestaurantApp {
     // EFFECTS: adds the item the user wants to their cart
     private void addAppropriate(String item) {
         if (item.equals("ice capp")) {
-            cart.addFood(new Food("Ice Capp", 10, 3.5, 5));
+            cart.addFood(f1);
         } else if (item.equals("coffee")) {
-            cart.addFood(new Food("Coffee", 8, 2.5, 4));
+            cart.addFood(f2);
         } else if (item.equals("bagel")) {
-            cart.addFood(new Food("Bagel", 5, 3, 2));
+            cart.addFood(f3);
         } else if (item.equals("tim bits")) {
-            cart.addFood(new Food("Tim Bits", 12, 5.5, 6));
+            cart.addFood(f4);
         }
     }
 

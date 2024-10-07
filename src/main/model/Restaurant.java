@@ -9,7 +9,6 @@ public class Restaurant {
     private String name;
     private ArrayList<Food> menu;
     private int userPoints;
-    
 
     // MODIFIES: this
     // EFFECTS:  initializes the restaurant with a name
