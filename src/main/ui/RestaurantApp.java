@@ -88,10 +88,11 @@ public class RestaurantApp {
 
     // MODIFIES: Cart, Restaurant
     // EFFECTS: purchases items in cart with the money the user
-    //          gives and sets points of restaurant to how many
+    //          gives and adds points of restaurant to how many
     //          points they accumulated from their purchases
     private void buyWithMoney() {
-        // stub
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buyWithMoney'");
     }
 
     // MODIFIES: Cart, Restaurant
