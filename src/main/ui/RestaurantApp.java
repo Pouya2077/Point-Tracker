@@ -77,29 +77,44 @@ public class RestaurantApp {
         }
     }
 
+    // MODIFIES: Cart, Restaurant
+    // EFFECTS: purchases items in cart with the money the user 
+    //          gives and sets points of restaurant to how many
+    //          points they accumulated from their purchases
     private void buyWithMoney() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buyWithMoney'");
     }
 
+    // MODIFIES: Cart, Restaurant
+    // EFFECTS: purchases items in cart with user's points and 
+    //          sets how many points they have left at the restaurant
     private void buyWithPoints() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buyWithPoints'");
+        int pointsLeft = cart.purchaseWithPoints(timmies.getUserPoints());
+        timmies.setUserPoints(pointsLeft);
+        System.out.println("\nYou have " + pointsLeft + " points left.\n");
     }
 
+    // EFFECTS: displays the items in the cart the user can purchase
+    //          with their current points
     private void cartPurchasables() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cartPurchasables'");
+        ArrayList<String> list = cart.canPurchaseList(timmies.getUserPoints());
+        for (String s: list) {
+            System.out.println("\n You can purchase:");
+            System.out.println("\n " + s + "\n");
+        }
     }
 
+    // EFFECTS: displays total price items in the cart are worth
     private void cartTotalPrice() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cartTotalPrice'");
+        double worth = cart.totalMoney();
+        System.out.println("\n All items in your cart are worth " + worth + " $\n");
     }
 
+    // EFFECTS: displays total points items in the cart are worth
     private void cartTotalPoints() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cartTotalPoints'");
+        int worth = cart.totalPoints();
+        System.out.println("\nAll items in your cart are worth " + worth + " points.\n");
     }
 
     // EFFECTS: displays items in the cart currently
