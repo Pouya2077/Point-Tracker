@@ -88,8 +88,8 @@ public class RestaurantApp {
 
     // MODIFIES: Cart, Restaurant
     // EFFECTS: purchases items in cart with the money the user
-    //          gives and adds points of restaurant to how many
-    //          points they accumulated from their purchases
+    // gives and adds points of restaurant to how many
+    // points they accumulated from their purchases
     private void buyWithMoney() {
         System.out.println("How much money would you like to spend?");
         double userMoney = userInput.nextDouble();
@@ -112,9 +112,14 @@ public class RestaurantApp {
     // with their current points
     private void cartPurchasables() {
         ArrayList<String> list = cart.canPurchaseList(timmies.getUserPoints());
-        for (String s : list) {
-            System.out.println("\n You can purchase:");
-            System.out.println("\n " + s + "\n");
+        if (list.isEmpty()) {
+            System.out.println("Your cart is empty.");
+        } else {
+            for (String s : list) {
+                System.out.println("\n You can purchase:");
+                System.out.println("\n " + s + "\n");
+            }
+
         }
     }
 
@@ -161,8 +166,12 @@ public class RestaurantApp {
             nextLine();
         }
 
-        removeAppropriate(currentCommand);
-        System.out.println("\nRemoved " + currentCommand + ".\n");
+        if (cart.getCart().isEmpty()) {
+            System.out.println("Your cart is empty.");
+        } else {
+            removeAppropriate(currentCommand);
+
+        }
     }
 
     // MODIFIES: Cart
@@ -170,12 +179,16 @@ public class RestaurantApp {
     private void removeAppropriate(String item) {
         if (item.equals("ice capp")) {
             cart.removeFood(f1);
+            System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("coffee")) {
             cart.removeFood(f2);
+            System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("bagel")) {
             cart.removeFood(f3);
+            System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("tim bits")) {
             cart.removeFood(f4);
+            System.out.println("\nRemoved " + item + ".\n");
         }
     }
 
