@@ -75,7 +75,7 @@ public class RestaurantApp {
             cartTotalPoints();
         } else if (currentCommand.equals("tm")) {
             cartTotalPrice();
-        } else if (currentCommand.equals("cp")) {
+        } else if (currentCommand.equals("pur")) {
             cartPurchasables();
         } else if (currentCommand.equals("bp")) {
             buyWithPoints();
@@ -112,12 +112,17 @@ public class RestaurantApp {
     // with their current points
     private void cartPurchasables() {
         ArrayList<String> list = cart.canPurchaseList(timmies.getUserPoints());
-        if (list.isEmpty()) {
+        ArrayList<String> inCart = cart.getFoodNames();
+        if (inCart.isEmpty()) {
             System.out.println("Your cart is empty.");
+        } else if (timmies.getUserPoints() == 0) {
+            System.out.println("You have 0 points.");
+        } else if (list.isEmpty()) {
+            System.out.println("You cannot purchase anything.");
         } else {
+            System.out.println("\n You can purchase:");
             for (String s : list) {
-                System.out.println("\n You can purchase:");
-                System.out.println("\n " + s + "\n");
+                System.out.println("\n " + s);
             }
 
         }
@@ -126,13 +131,13 @@ public class RestaurantApp {
     // EFFECTS: displays total price items in the cart are worth
     private void cartTotalPrice() {
         double worth = cart.totalMoney();
-        System.out.println("\n All items in your cart are worth " + worth + " $\n");
+        System.out.println("\n All items in your cart are worth " + "$" + worth + " \n");
     }
 
-    // EFFECTS: displays total points items in the cart are worth
+    // EFFECTS: displays total points items in the cart are costs
     private void cartTotalPoints() {
         int worth = cart.totalPoints();
-        System.out.println("\nAll items in your cart are worth " + worth + " points.\n");
+        System.out.println("\nAll items in your cart cost " + worth + " points.\n");
     }
 
     // EFFECTS: displays items in the cart currently
@@ -264,7 +269,7 @@ public class RestaurantApp {
         System.out.println("q = Quit");
         System.out.println("p = Points I currently have");
         System.out.println("v = View items in my cart");
-        System.out.println("cp = Items in my cart purchasable with my current points");
+        System.out.println("pur = Items in my cart purchasable with my current points");
         System.out.println("a/r = Add an item to my cart/remove an item from my cart");
         System.out.println("tp/tm = Total points/total price items in my cart are worth");
         System.out.println("bp/bm = Buy items in my cart with points/money");
