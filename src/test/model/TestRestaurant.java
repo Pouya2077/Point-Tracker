@@ -9,20 +9,20 @@ import java.util.ArrayList;
 
 public class TestRestaurant {
     private Restaurant testRestaurant;
-    
+
     @BeforeEach
     void runBefore() {
         testRestaurant = new Restaurant();
 
     }
 
-    @Test 
+    @Test
     void testConstructor() {
         ArrayList<Food> menu = testRestaurant.getMenuItems();
         assertEquals("Tim Horton's", testRestaurant.getName());
         assertEquals(0, testRestaurant.getUserPoints());
-        assertEquals(4, menu.size()); 
-    
+        assertEquals(4, menu.size());
+
     }
 
 }

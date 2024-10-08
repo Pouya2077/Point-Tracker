@@ -11,9 +11,9 @@ public class Restaurant {
     private int userPoints;
 
     // MODIFIES: this
-    // EFFECTS:  initializes the restaurant with a name
-    //           zero user points, list of menu items, 
-    //           and an empty cart
+    // EFFECTS: initializes the restaurant with a name
+    // zero user points, list of menu items,
+    // and an empty cart
     public Restaurant() {
         this.name = "Tim Horton's";
         this.menu = new ArrayList<Food>();
@@ -30,16 +30,15 @@ public class Restaurant {
     }
 
     public ArrayList<Food> getMenuItems() {
-        return this.menu; 
+        return this.menu;
     }
 
     public int getUserPoints() {
-        return this.userPoints; 
+        return this.userPoints;
     }
 
     public void setUserPoints(int points) {
         this.userPoints += points;
     }
-
 
 }

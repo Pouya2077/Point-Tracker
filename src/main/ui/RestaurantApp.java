@@ -137,7 +137,7 @@ public class RestaurantApp {
     // EFFECTS: displays total points items in the cart are costs
     private void cartTotalPoints() {
         int worth = cart.totalPoints();
-        System.out.println("\nAll items in your cart cost " + worth + " points.\n");
+        System.out.println("\nAll items in your cart are worth " + worth + " points.\n");
     }
 
     // EFFECTS: displays items in the cart currently

@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 public class TestFood {
     private Food testFood;
 
-    @BeforeEach 
+    @BeforeEach
     void runBefore() {
         testFood = new Food("Donut", 10, 2.30, 2);
     }
 
-    @Test 
+    @Test
     void testConstructor() {
         assertEquals("Donut", testFood.getName());
         assertEquals(10, testFood.getCostInPoints());
@@ -21,7 +21,5 @@ public class TestFood {
         assertEquals(2, testFood.getPointsWorth());
 
     }
-
-
 
 }
