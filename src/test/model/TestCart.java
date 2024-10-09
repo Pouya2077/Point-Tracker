@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+// tests for the Cart class
 public class TestCart {
     private Cart testCart;
     private Food f1;

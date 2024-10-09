@@ -23,6 +23,7 @@ public class RestaurantApp {
     private Food f3;
     private Food f4;
 
+    // MODIFIES: this
     // EFFECTS: runs the Restaurant app
     // and initializes fields
     public RestaurantApp() {
@@ -60,6 +61,8 @@ public class RestaurantApp {
 
     }
 
+    // EFFECTS: takes the command and runs the appropriate
+    // command for it
     private void processCommand(String currentCommand) {
         if (currentCommand.equals("m")) {
             displayMenu();
@@ -86,7 +89,7 @@ public class RestaurantApp {
         }
     }
 
-    // MODIFIES: Cart, Restaurant
+    // MODIFIES: Restaurant
     // EFFECTS: purchases items in cart with the money the user
     // gives and adds points of restaurant to how many
     // points they accumulated from their purchases
@@ -97,9 +100,10 @@ public class RestaurantApp {
         int pointsEarned = cart.purchaseWithMoney(userMoney);
         timmies.setUserPoints(pointsEarned);
         System.out.println("You earned " + pointsEarned + " points!");
+
     }
 
-    // MODIFIES: Cart, Restaurant
+    // MODIFIES: Restaurant
     // EFFECTS: purchases items in cart with user's points and
     // sets how many points they have left at the restaurant
     private void buyWithPoints() {
@@ -140,7 +144,7 @@ public class RestaurantApp {
         System.out.println("\nAll items in your cart are worth " + worth + " points.\n");
     }
 
-    // EFFECTS: displays items in the cart currently
+    // EFFECTS: displays items currently in the cart
     private void viewCart() {
         ArrayList<Food> list = this.cart.getCart();
         if (cart.getCart().isEmpty()) {
@@ -236,7 +240,7 @@ public class RestaurantApp {
         System.out.println("You have " + timmies.getUserPoints() + " points.");
     }
 
-    // EFFECTS: displays all menu items in the terminal
+    // EFFECTS: displays all menu items at the restaurant
     private void displayMenu() {
         line();
         System.out.println("We offer the following menu items...");
@@ -248,7 +252,7 @@ public class RestaurantApp {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: Scanner
     // EFFECTS: gets the next command that user
     // specifies
     private void nextLine() {

@@ -27,6 +27,7 @@ public class Cart {
         cart.add(food);
     }
 
+    // REQUIRES: cart is not empty
     // MODIFIES: this
     // EFFECTS: removes the food specified by
     // the user from the cart
@@ -34,6 +35,7 @@ public class Cart {
         cart.remove(food);
     }
 
+    // REQUIRES: cart is not empty
     // EFFECTS: prints a list of the names of
     // each food item in the cart
     public ArrayList<String> getFoodNames() {
@@ -44,6 +46,7 @@ public class Cart {
         return acc;
     }
 
+    // REQUIRES: cart is not empty
     // EFFECTS: returns the total points everything
     // in your cart is worth
     public int totalPoints() {
@@ -54,6 +57,7 @@ public class Cart {
         return acc;
     }
 
+    // REQUIRES: cart is not empty
     // EFFECTS: returns the total price everything
     // in your cart is worth
     public double totalMoney() {
@@ -64,6 +68,7 @@ public class Cart {
         return acc;
     }
 
+    // REQUIRES: cart is not empty
     // EFFECTS: prints a list of the names of
     // each food item user can purchase
     // with their current points
@@ -78,7 +83,7 @@ public class Cart {
         return canPurchase;
     }
 
-    // MODIFIES: this
+    // REQUIRES: cart is not empty
     // EFFECTS: purchases items in your cart with the
     // points the user has starting from the
     // first and returns the points the user has left
@@ -98,7 +103,7 @@ public class Cart {
 
     }
 
-    // MODIFIES: this
+    // REQUIRES: cart is not empty
     // EFFECTS: purchases items in your cart with the
     // money the user specifies starting from the first,
     // and returns the amount of points the user has earned

@@ -14,8 +14,7 @@ public class Food {
     // EFFECTS: initializes a menu item with
     // an appropriate name, price in money,
     // price in user points, and how many
-    // points it is worth when
-    // bought with money
+    // points it is worth when bought with money
     public Food(String name, int pointsToBuy, double money, int pointsWorth) {
         this.name = name;
         this.costInPoints = pointsToBuy;

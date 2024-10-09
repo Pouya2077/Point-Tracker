@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+// tests for the Restaurant class
 public class TestRestaurant {
     private Restaurant testRestaurant;
 
