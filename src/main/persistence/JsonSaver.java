@@ -16,6 +16,4 @@ public class JsonSaver {
         // TODO - add the constructor 
     }
 
-    
-
 }
