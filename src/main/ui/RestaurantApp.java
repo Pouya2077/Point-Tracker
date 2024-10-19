@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import model.Restaurant;
@@ -26,7 +27,7 @@ public class RestaurantApp {
     // MODIFIES: this
     // EFFECTS: runs the Restaurant app
     // and initializes fields
-    public RestaurantApp() {
+    public RestaurantApp() throws FileNotFoundException {
         canRun = true;
         currentCommand = null;
         userInput = new Scanner(System.in);
@@ -111,18 +112,20 @@ public class RestaurantApp {
         }
     }
 
-    // EFFECTS: loads a previous saved state of the application,
-    // this includes the previous restaurant and cart
-    private void loadApplication() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadApplication'");
-    }
-
     // EFFECTS: saves the current state of the application,
     // this includes the current restaurant and cart
     private void saveApplication() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveApplication'");
+    
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads a previous saved state of the application,
+    // this includes the previous restaurant and cart
+    private void loadApplication() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loadApplication'");
     }
 
     // MODIFIES: Restaurant
