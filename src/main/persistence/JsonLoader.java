@@ -15,7 +15,7 @@ public class JsonLoader {
     }
 
     // EFFECTS: reads the data from the source file 
-    // and loads it for the program
+    // and returns it so the program can use it 
     public Restaurant read() throws IOException {
         return new Restaurant(); 
         // TODO - create reading capabilities

@@ -1,0 +1,33 @@
+{
+    "name": "Tim Horton's",
+    "userPoints": 0, 
+    "menu": [
+        {
+            "name": "Ice Capp", 
+            "pointsToBuy": 10, 
+            "money": 3.5, 
+            "pointsWorth": 5
+        }, 
+
+        {
+            "name": "Coffee", 
+            "pointsToBuy": 8, 
+            "money": 2.5, 
+            "pointsWorth": 4
+        }, 
+
+        {
+            "name": "Bagel", 
+            "pointsToBuy": 5, 
+            "money": 3, 
+            "pointsWorth": 2
+        }, 
+
+        {
+            "name": "Tim Bits", 
+            "pointsToBuy": 12, 
+            "money": 3, 
+            "pointsWorth": 6
+        }
+    ]
+}
