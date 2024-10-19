@@ -66,14 +66,14 @@ public class RestaurantApp {
     private void processCommand(String currentCommand) {
         if (currentCommand.equals("m")) {
             displayMenu();
-        } else if (currentCommand.equals("p")) {
-            displayCurrentPoints();
-        } else if (currentCommand.equals("a")) {
-            addItem();
-        } else if (currentCommand.equals("r")) {
-            removeItem();
-        } else if (currentCommand.equals("v")) {
-            viewCart();
+        } else if (currentCommand.equals("p")
+                || currentCommand.equals("a")
+                || currentCommand.equals("r")
+                || currentCommand.equals("v")) {
+            descriptiveCommands(currentCommand);
+        } else if (currentCommand.equals("s")
+                || currentCommand.equals("l")) {
+            saveLoadCommands(currentCommand);
         } else if (currentCommand.equals("tp")) {
             cartTotalPoints();
         } else if (currentCommand.equals("tm")) {
@@ -84,24 +84,42 @@ public class RestaurantApp {
             buyWithPoints();
         } else if (currentCommand.equals("bm")) {
             buyWithMoney();
-        } else if (currentCommand.equals("s")) {
-            saveApplication();
-        } else if (currentCommand.equals("l")) {
-            loadApplication();
         } else {
             System.out.println("That input is invalid, try again...");
         }
     }
 
-    // EFFECTS: loads a previous saved state of the application, 
+    // EFFECTS: runs the appropriate cart description command
+    private void descriptiveCommands(String currentCommand) {
+        if (currentCommand.equals("p")) {
+            displayCurrentPoints();
+        } else if (currentCommand.equals("a")) {
+            addItem();
+        } else if (currentCommand.equals("r")) {
+            removeItem();
+        } else if (currentCommand.equals("v")) {
+            viewCart();
+        }
+    }
+
+    // EFFECTS: runs the appropriate save load command
+    private void saveLoadCommands(String currentCommand) {
+        if (currentCommand.equals("s")) {
+            saveApplication();
+        } else {
+            loadApplication();
+        }
+    }
+
+    // EFFECTS: loads a previous saved state of the application,
     // this includes the previous restaurant and cart
     private void loadApplication() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'loadApplication'");
     }
 
-    // EFFECTS: saves the current state of the application, 
-    // this includes the current restaurant and cart 
+    // EFFECTS: saves the current state of the application,
+    // this includes the current restaurant and cart
     private void saveApplication() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveApplication'");
@@ -296,7 +314,7 @@ public class RestaurantApp {
         System.out.println("tp/tm = Total points/total price items in my cart are worth");
         System.out.println("bp/bm = Buy items in my cart with points/money");
         System.out.println("s = Save currents state");
-        System.out.println("Load previous state");
+        System.out.println("l = Load previous state");
     }
 
     // EFFECTS: prints a simple line in the terminal
