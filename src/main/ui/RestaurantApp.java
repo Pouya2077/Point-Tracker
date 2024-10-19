@@ -84,9 +84,27 @@ public class RestaurantApp {
             buyWithPoints();
         } else if (currentCommand.equals("bm")) {
             buyWithMoney();
+        } else if (currentCommand.equals("s")) {
+            saveApplication();
+        } else if (currentCommand.equals("l")) {
+            loadApplication();
         } else {
             System.out.println("That input is invalid, try again...");
         }
+    }
+
+    // EFFECTS: loads a previous saved state of the application, 
+    // this includes the previous restaurant and cart
+    private void loadApplication() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loadApplication'");
+    }
+
+    // EFFECTS: saves the current state of the application, 
+    // this includes the current restaurant and cart 
+    private void saveApplication() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveApplication'");
     }
 
     // MODIFIES: Restaurant
@@ -277,6 +295,8 @@ public class RestaurantApp {
         System.out.println("a/r = Add an item to my cart/remove an item from my cart");
         System.out.println("tp/tm = Total points/total price items in my cart are worth");
         System.out.println("bp/bm = Buy items in my cart with points/money");
+        System.out.println("s = Save currents state");
+        System.out.println("Load previous state");
     }
 
     // EFFECTS: prints a simple line in the terminal
