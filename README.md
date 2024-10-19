@@ -35,5 +35,8 @@ In this case X would be Food (menu items) that the user adds to Cart (Y).
 4. As a user, I want to see a list of menu items I can purchase with my current points. 
 5. As a user, I want to buy items in my cart with the money/points I give the application. 
 
+6. As a user, I want to be able to save my cart and points before I close the application.
+7. As a user, I want to be able to load a save file of the cart and points I had at the store.
+
 
 
