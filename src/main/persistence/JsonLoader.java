@@ -16,20 +16,20 @@ public class JsonLoader {
     String sourceFile;
 
     // MODIFIES: this
-    // EFFECTS: constructs a Json reader that 
-    // can read from the given file 
+    // EFFECTS: constructs a Json reader that
+    // can read from the given file
     public JsonLoader(String sourceFile) {
         this.sourceFile = sourceFile;
-        
+
     }
 
-    // EFFECTS: reads the data from the source file 
+    // EFFECTS: reads the data from the source file
     // into a string, the string becomes a JSONObject which
-    // we turn into a Restaurant object to return 
+    // we turn into a Restaurant object to return
     public Restaurant read() throws IOException {
         String data = readFile(sourceFile);
-        JSONObject jsonObject = new JSONObject (data);
-        return MakeRestaurant(jsonObject);
+        JSONObject jsonObject = new JSONObject(data);
+        return makeRestaurant(jsonObject);
     }
 
     // EFFECTS: reads the sourceFile and turns it into data that
@@ -41,11 +41,11 @@ public class JsonLoader {
             stream.forEach(s -> contentBuilder.append(s));
         }
 
-        return contentBuilder.toString(); 
+        return contentBuilder.toString();
     }
 
     // EFFECTS: creates a Restaurant from the data of the JSONObject
-    private Restaurant MakeRestaurant(JSONObject jsonObject) {
+    private Restaurant makeRestaurant(JSONObject jsonObject) {
         int points = jsonObject.getInt("userPoints");
 
         Restaurant restaurant = new Restaurant();
@@ -53,6 +53,5 @@ public class JsonLoader {
 
         return restaurant;
     }
-
 
 }

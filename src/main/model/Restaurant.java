@@ -54,7 +54,7 @@ public class Restaurant {
 
         JSONArray jsonArray = new JSONArray();
 
-        for (Food f: menu) {
+        for (Food f : menu) {
             JSONObject foodJson = new JSONObject();
 
             foodJson.put("name", f.getName());

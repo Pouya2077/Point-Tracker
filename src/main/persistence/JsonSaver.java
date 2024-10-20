@@ -13,8 +13,8 @@ public class JsonSaver {
 
     // MODIFIES: this
     // EFFECTS: constructs a Json writer with the ability
-    // to read the data of the application and save it 
-    // to a file stored in the data package 
+    // to read the data of the application and save it
+    // to a file stored in the data package
     public JsonSaver(String sourceFile) {
         this.sourceFile = sourceFile;
 
@@ -38,7 +38,7 @@ public class JsonSaver {
     }
 
     // MODIFIES: this
-    // EFFECTS: closes the writer 
+    // EFFECTS: closes the writer
     public void close() {
         writer.close();
 

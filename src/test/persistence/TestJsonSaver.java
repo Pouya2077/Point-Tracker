@@ -16,19 +16,19 @@ import model.Food;
 // tests for JsonSaver class
 public class TestJsonSaver {
 
-    @Test 
+    @Test
     void testWriteToInvalidLocation() {
         try {
             JsonSaver saver = new JsonSaver("./data/invali:\0dName.json");
             saver.open();
             fail("Should not reach here - exception should have been thrown!");
         } catch (FileNotFoundException e) {
-            // Expected exception to be thrown here 
+            // Expected exception to be thrown here
         }
-        
+
     }
 
-    @Test 
+    @Test
     void testWriteZeroPoints() {
         Restaurant restaurant = new Restaurant();
         JsonSaver saver = new JsonSaver("./data/testWriteZeroPoints.json");
@@ -44,12 +44,12 @@ public class TestJsonSaver {
             assertEquals(0, readRestaurant.getUserPoints());
             assertEquals("Tim Horton's", readRestaurant.getName());
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             fail("Should not have caught exception here - excecution should be fine!");
         }
     }
 
-    @Test 
+    @Test
     void testWriteGeneralRestaurant() {
         Restaurant restaurant = new Restaurant();
         JsonSaver saver = new JsonSaver("./data/testWriteGeneralRestaurant.json");
@@ -66,18 +66,17 @@ public class TestJsonSaver {
             assertEquals(15, readRestaurant.getUserPoints());
             assertEquals("Tim Horton's", readRestaurant.getName());
 
-           ArrayList<Food> menu = readRestaurant.getMenuItems();
+            ArrayList<Food> menu = readRestaurant.getMenuItems();
 
-           assertEquals(RestaurantApp.FOOD1, menu.get(0));
-           assertEquals(RestaurantApp.FOOD2, menu.get(1));
-           assertEquals(RestaurantApp.FOOD3, menu.get(2));
-           assertEquals(RestaurantApp.FOOD4, menu.get(3));
-           assertEquals(4, menu.size());
+            assertEquals(RestaurantApp.FOOD1, menu.get(0));
+            assertEquals(RestaurantApp.FOOD2, menu.get(1));
+            assertEquals(RestaurantApp.FOOD3, menu.get(2));
+            assertEquals(RestaurantApp.FOOD4, menu.get(3));
+            assertEquals(4, menu.size());
 
         } catch (IOException e) {
             fail("Should not have caught exception here - excecution should be fine!");
         }
-        
 
     }
 
