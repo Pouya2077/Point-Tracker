@@ -43,8 +43,6 @@ public class JsonLoader {
 
         return contentBuilder.toString(); 
     }
-    // CITATION: the basis for the code in the readFile method was 
-    // inspired by the example provided in the phase 2 Edx
 
     // EFFECTS: creates a Restaurant from the data of the JSONObject
     private Restaurant MakeRestaurant(JSONObject jsonObject) {

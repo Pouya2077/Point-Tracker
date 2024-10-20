@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.Restaurant;
+import ui.RestaurantApp;
 import model.Food;
 
 // tests for JsonSaver class
@@ -18,7 +19,7 @@ public class TestJsonSaver {
     @Test 
     void testWriteToInvalidLocation() {
         try {
-            JsonSaver saver = new JsonSaver("./data/invalidName.json");
+            JsonSaver saver = new JsonSaver("./data/invali:\0dName.json");
             saver.open();
             fail("Should not reach here - exception should have been thrown!");
         } catch (FileNotFoundException e) {
@@ -55,11 +56,6 @@ public class TestJsonSaver {
         restaurant.setUserPoints(15);
 
         try {
-            Food f1 = new Food("Ice Capp", 10, 3.5, 5);
-            Food f2 = new Food("Coffee", 8, 2.5, 4);
-            Food f3 = new Food("Bagel", 5, 3, 2);
-            Food f4 = new Food("Tim Bits", 12, 5.5, 6);
-
             saver.open();
             saver.write(restaurant);
             saver.close();
@@ -72,10 +68,10 @@ public class TestJsonSaver {
 
            ArrayList<Food> menu = readRestaurant.getMenuItems();
 
-           assertEquals(f1, menu.get(0));
-           assertEquals(f2, menu.get(1));
-           assertEquals(f3, menu.get(2));
-           assertEquals(f4, menu.get(3));
+           assertEquals(RestaurantApp.FOOD1, menu.get(0));
+           assertEquals(RestaurantApp.FOOD2, menu.get(1));
+           assertEquals(RestaurantApp.FOOD3, menu.get(2));
+           assertEquals(RestaurantApp.FOOD4, menu.get(3));
            assertEquals(4, menu.size());
 
         } catch (IOException e) {

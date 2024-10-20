@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import ui.RestaurantApp;
+
 // Represents a fast food restaurant with a name,
 // list of menu items, the points the user has
 // at the restaurant
@@ -17,10 +22,10 @@ public class Restaurant {
     public Restaurant() {
         this.name = "Tim Horton's";
         this.menu = new ArrayList<Food>();
-        this.menu.add(new Food("Ice Capp", 10, 3.5, 5));
-        this.menu.add(new Food("Coffee", 8, 2.5, 4));
-        this.menu.add(new Food("Bagel", 5, 3, 2));
-        this.menu.add(new Food("Tim Bits", 12, 5.5, 6));
+        this.menu.add(RestaurantApp.FOOD1);
+        this.menu.add(RestaurantApp.FOOD2);
+        this.menu.add(RestaurantApp.FOOD3);
+        this.menu.add(RestaurantApp.FOOD4);
         this.userPoints = 0;
 
     }
@@ -39,6 +44,32 @@ public class Restaurant {
 
     public void setUserPoints(int points) {
         this.userPoints += points;
+    }
+
+    // EFFECTS: returns the restaurant as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.name);
+        json.put("userPoints", this.userPoints);
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food f: menu) {
+            JSONObject foodJson = new JSONObject();
+
+            foodJson.put("name", f.getName());
+            foodJson.put("pointsToBuy", f.getCostInPoints());
+            foodJson.put("money", f.getCostInMoney());
+            foodJson.put("pointsWorth", f.getPointsWorth());
+
+            jsonArray.put(foodJson);
+
+        }
+
+        json.put("menu", jsonArray);
+
+        return json;
+
     }
 
 }

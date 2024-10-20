@@ -23,10 +23,10 @@ public class RestaurantApp {
     private Cart cart;
     private ArrayList<Food> menu;
 
-    private Food f1;
-    private Food f2;
-    private Food f3;
-    private Food f4;
+    public static final Food FOOD1 = new Food("Ice Capp", 10, 3.5, 5);
+    public static final Food FOOD2 = new Food("Coffee", 8, 2.5, 4);
+    public static final Food FOOD3 = new Food("Bagel", 5, 3, 2);
+    public static final Food FOOD4 = new Food("Tim Bits", 12, 5.5, 6);
 
     private JsonLoader loader;
     private JsonSaver saver;
@@ -48,11 +48,6 @@ public class RestaurantApp {
         timmies = new Restaurant();
         cart = new Cart();
         menu = timmies.getMenuItems();
-
-        f1 = new Food("Ice Capp", 10, 3.5, 5);
-        f2 = new Food("Coffee", 8, 2.5, 4);
-        f3 = new Food("Bagel", 5, 3, 2);
-        f4 = new Food("Tim Bits", 12, 5.5, 6);
 
         runApp();
     }
@@ -245,16 +240,16 @@ public class RestaurantApp {
     // EFFECTS: removes the item the user wants from the cart
     private void removeAppropriate(String item) {
         if (item.equals("ice capp")) {
-            cart.removeFood(f1);
+            cart.removeFood(FOOD1);
             System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("coffee")) {
-            cart.removeFood(f2);
+            cart.removeFood(FOOD2);
             System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("bagel")) {
-            cart.removeFood(f3);
+            cart.removeFood(FOOD3);
             System.out.println("\nRemoved " + item + ".\n");
         } else if (item.equals("tim bits")) {
-            cart.removeFood(f4);
+            cart.removeFood(FOOD4);
             System.out.println("\nRemoved " + item + ".\n");
         }
     }
@@ -283,13 +278,13 @@ public class RestaurantApp {
     // EFFECTS: adds the item the user wants to their cart
     private void addAppropriate(String item) {
         if (item.equals("ice capp")) {
-            cart.addFood(f1);
+            cart.addFood(FOOD1);
         } else if (item.equals("coffee")) {
-            cart.addFood(f2);
+            cart.addFood(FOOD2);
         } else if (item.equals("bagel")) {
-            cart.addFood(f3);
+            cart.addFood(FOOD3);
         } else if (item.equals("tim bits")) {
-            cart.addFood(f4);
+            cart.addFood(FOOD4);
         }
     }
 
