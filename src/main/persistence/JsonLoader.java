@@ -1,14 +1,13 @@
 package persistence;
 
-import java.io.IOException;
-import java.util.stream.Stream;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
+import java.nio.file.Files;
 
 import java.util.ArrayList;
 
@@ -48,6 +47,8 @@ public class JsonLoader {
 
         return contentBuilder.toString(); 
     }
+    // CITATION: the basis for the code in the readFile method was 
+    // inspired by the example provided in the phase 2 Edx
 
     // EFFECTS: creates a Restaurant from the data of the JSONObject
     private Restaurant MakeRestaurant(JSONObject jsonObject) {

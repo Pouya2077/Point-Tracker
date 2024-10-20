@@ -10,7 +10,7 @@ public class JsonSaver {
     // EFFECTS: constructs a Json writer with the ability
     // to read the data of the application and save it 
     // to a file stored in the data package 
-    public JsonSaver(Restaurant restaurant) {
+    public JsonSaver(String sourceFile) {
         // TODO - add the constructor 
     }
 

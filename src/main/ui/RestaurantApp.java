@@ -2,9 +2,12 @@ package ui;
 
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import model.Restaurant;
+import persistence.JsonLoader;
+import persistence.JsonSaver;
 import model.Food;
 import model.Cart;
 
@@ -19,10 +22,15 @@ public class RestaurantApp {
     private Restaurant timmies;
     private Cart cart;
     private ArrayList<Food> menu;
+
     private Food f1;
     private Food f2;
     private Food f3;
     private Food f4;
+
+    private JsonLoader loader;
+    private JsonSaver saver;
+    private String saveLocation;
 
     // MODIFIES: this
     // EFFECTS: runs the Restaurant app
@@ -32,9 +40,15 @@ public class RestaurantApp {
         currentCommand = null;
         userInput = new Scanner(System.in);
         userInput.useDelimiter("\r?\n|\r");
+
+        saveLocation = "./data/restaurant.json";
+        loader = new JsonLoader(saveLocation);
+        saver = new JsonSaver(saveLocation);
+
         timmies = new Restaurant();
         cart = new Cart();
         menu = timmies.getMenuItems();
+
         f1 = new Food("Ice Capp", 10, 3.5, 5);
         f2 = new Food("Coffee", 8, 2.5, 4);
         f3 = new Food("Bagel", 5, 3, 2);
@@ -117,15 +131,20 @@ public class RestaurantApp {
     private void saveApplication() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveApplication'");
-    
+
     }
 
     // MODIFIES: this
     // EFFECTS: loads a previous saved state of the application,
     // this includes the previous restaurant and cart
     private void loadApplication() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadApplication'");
+        try {
+            timmies = loader.read();
+            System.out.println("Successfully loaded "
+                    + timmies.getName() + " from " + saveLocation);
+        } catch (IOException e) {
+            System.out.println("Unable to read and load restaurant from " + saveLocation);
+        }
     }
 
     // MODIFIES: Restaurant
