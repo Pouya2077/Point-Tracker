@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import model.Restaurant;
 
+// tests for JsonLoader class
 public class TestJsonLoader {
 
     @Test
