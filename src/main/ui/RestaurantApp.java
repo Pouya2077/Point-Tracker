@@ -124,8 +124,16 @@ public class RestaurantApp {
     // EFFECTS: saves the current state of the application,
     // this includes the current restaurant and cart
     private void saveApplication() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveApplication'");
+        try {
+            saver.open();
+            saver.write(timmies);
+            saver.close();
+            System.out.println("Successfully saved " + timmies.getName() + " to " + saveLocation + ".");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to location " + saveLocation + ".");
+
+        }
 
     }
 
