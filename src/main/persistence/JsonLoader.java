@@ -1,10 +1,19 @@
 package persistence;
 
 import java.io.IOException;
+import java.util.stream.Stream;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import java.util.ArrayList;
+
 import model.Restaurant;
+import model.Food;
 
 // Represents a Json loader, which will read a saved
 // json source file for its saved Restaurant
@@ -21,21 +30,33 @@ public class JsonLoader {
 
     // EFFECTS: reads the data from the source file 
     // into a string, the string becomes a JSONObject which
-    // we then resolve to a Restaurant to return 
+    // we turn into a Restaurant object to return 
     public Restaurant read() throws IOException {
         String data = readFile(sourceFile);
         JSONObject jsonObject = new JSONObject (data);
         return MakeRestaurant(jsonObject);
     }
 
-    private String readFile(String sourceFile2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readFile'");
+    // EFFECTS: reads the sourceFile and turns it into data that
+    // the JSONObject can use (a single string)
+    private String readFile(String sourceFile) throws IOException {
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try (Stream<String> stream = Files.lines(Paths.get(sourceFile), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s));
+        }
+
+        return contentBuilder.toString(); 
     }
 
+    // EFFECTS: creates a Restaurant from the data of the JSONObject
     private Restaurant MakeRestaurant(JSONObject jsonObject) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'MakeRestaurant'");
+        int points = jsonObject.getInt("userPoints");
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setUserPoints(points);
+
+        return restaurant;
     }
 
 
