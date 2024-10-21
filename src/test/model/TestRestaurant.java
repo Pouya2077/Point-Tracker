@@ -27,6 +27,9 @@ public class TestRestaurant {
         testRestaurant.addPoints(20);
         assertEquals(20, testRestaurant.getUserPoints());
 
+        testRestaurant.setPoints(0);
+        assertEquals(0, testRestaurant.getUserPoints());
+
     }
 
 }
