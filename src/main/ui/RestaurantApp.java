@@ -173,7 +173,7 @@ public class RestaurantApp {
         double userMoney = userInput.nextDouble();
 
         int pointsEarned = cart.purchaseWithMoney(userMoney);
-        timmies.setUserPoints(pointsEarned);
+        timmies.addPoints(pointsEarned);
         System.out.println("You earned " + pointsEarned + " points!");
 
     }
@@ -183,7 +183,7 @@ public class RestaurantApp {
     // sets how many points they have left at the restaurant
     private void buyWithPoints() {
         int pointsLeft = cart.purchaseWithPoints(timmies.getUserPoints());
-        timmies.setUserPoints(pointsLeft);
+        timmies.setPoints(pointsLeft);
         System.out.println("\nYou have " + pointsLeft + " points left.\n");
     }
 

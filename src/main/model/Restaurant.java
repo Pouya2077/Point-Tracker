@@ -42,8 +42,12 @@ public class Restaurant {
         return this.userPoints;
     }
 
-    public void setUserPoints(int points) {
+    public void addPoints(int points) {
         this.userPoints += points;
+    }
+
+    public void setPoints(int points) {
+        this.userPoints = points;
     }
 
     // EFFECTS: returns the restaurant as JSON object

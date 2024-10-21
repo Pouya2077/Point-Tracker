@@ -55,7 +55,7 @@ public class JsonLoader {
 
         Restaurant restaurant = new Restaurant();
         int points = restJson.getInt("userPoints");
-        restaurant.setUserPoints(points);
+        restaurant.addPoints(points);
 
         Cart cart = new Cart();
 

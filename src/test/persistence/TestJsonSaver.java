@@ -64,7 +64,7 @@ public class TestJsonSaver {
         Restaurant restaurant = new Restaurant();
         Cart cart = new Cart();
         JsonSaver saver = new JsonSaver("./data/testWriteGeneralApplicationState.json");
-        restaurant.setUserPoints(15);
+        restaurant.addPoints(15);
         cart.addFood(RestaurantApp.FOOD1);
         cart.addFood(RestaurantApp.FOOD3);
         ApplicationState state = new ApplicationState(restaurant, cart);
