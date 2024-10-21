@@ -131,7 +131,7 @@ public class Cart {
 
         JSONArray jsonArray = new JSONArray();
 
-        for (Food f: cart) {
+        for (Food f : cart) {
             JSONObject foodJson = new JSONObject();
 
             foodJson.put("name", f.getName());

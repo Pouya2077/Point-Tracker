@@ -61,9 +61,9 @@ public class JsonLoader {
 
         JSONArray cartArray = cartJson.getJSONArray("cart");
 
-        for (Object js: cartArray) {
+        for (Object js : cartArray) {
             JSONObject foodJson = (JSONObject) js;
-            
+
             int pointsToBuy = foodJson.getInt("pointsToBuy");
             double money = foodJson.getDouble("money");
             String name = foodJson.getString("name");

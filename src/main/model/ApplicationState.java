@@ -33,7 +33,7 @@ public class ApplicationState {
     }
 
     // EFFECTS: creates a JSONObject that holds the restaurant
-    // and cart of the application 
+    // and cart of the application
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
 

@@ -29,7 +29,7 @@ public class JsonSaver {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes the ApplicationState to the JSON 
+    // EFFECTS: writes the ApplicationState to the JSON
     // file to save it using the writer
     public void write(ApplicationState state) {
         JSONObject json = state.toJson();
