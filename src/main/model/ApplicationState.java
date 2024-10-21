@@ -8,6 +8,8 @@ public class ApplicationState {
     private Restaurant restaurant;
     private Cart cart;
 
+    // MODIFIES: this
+    // EFFECTS: initializes the fields of the application state
     public ApplicationState(Restaurant restaurant, Cart cart) {
         this.restaurant = restaurant;
         this.cart = cart;

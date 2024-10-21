@@ -48,7 +48,7 @@ public class JsonLoader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: creates a Restaurant from the data of the JSONObject
+    // EFFECTS: creates and returns an ApplicationState from the data of the JSONObject
     private ApplicationState makeApplicationState(JSONObject jsonObject) {
         JSONObject restJson = jsonObject.getJSONObject("restaurant");
         JSONObject cartJson = jsonObject.getJSONObject("cart");
