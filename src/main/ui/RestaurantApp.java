@@ -10,6 +10,7 @@ import persistence.JsonLoader;
 import persistence.JsonSaver;
 import model.Food;
 import model.Cart;
+import model.ApplicationState;
 
 // Represents the ui used for the application, 
 // can take in user input and respond to it, 
@@ -22,6 +23,7 @@ public class RestaurantApp {
     private Restaurant timmies;
     private Cart cart;
     private ArrayList<Food> menu;
+    private ApplicationState state;
 
     public static final Food FOOD1 = new Food("Ice Capp", 10, 3.5, 5);
     public static final Food FOOD2 = new Food("Coffee", 8, 2.5, 4);
@@ -41,13 +43,20 @@ public class RestaurantApp {
         userInput = new Scanner(System.in);
         userInput.useDelimiter("\r?\n|\r");
 
-        saveLocation = "./data/restaurant.json";
+        saveLocation = "./data/restaurantApp.json";
         loader = new JsonLoader(saveLocation);
         saver = new JsonSaver(saveLocation);
 
         timmies = new Restaurant();
         cart = new Cart();
-        menu = timmies.getMenuItems();
+
+        state = new ApplicationState(timmies, cart);
+
+        menu = new ArrayList<Food>();
+        menu.add(FOOD1);
+        menu.add(FOOD2);
+        menu.add(FOOD3);
+        menu.add(FOOD4);
 
         runApp();
     }
@@ -125,10 +134,13 @@ public class RestaurantApp {
     // this includes the current restaurant and cart
     private void saveApplication() {
         try {
+            state.setRestaurant(timmies);
+            state.setCart(cart);
+
             saver.open();
-            saver.write(timmies);
+            saver.write(state);
             saver.close();
-            System.out.println("Successfully saved " + timmies.getName() + " to " + saveLocation + ".");
+            System.out.println("Successfully saved to " + saveLocation + ".");
 
         } catch (FileNotFoundException e) {
             System.out.println("Unable to save to location " + saveLocation + ".");
@@ -142,9 +154,8 @@ public class RestaurantApp {
     // this includes the previous restaurant and cart
     private void loadApplication() {
         try {
-            timmies = loader.read();
-            System.out.println("Successfully loaded "
-                    + timmies.getName() + " from " + saveLocation);
+            timmies = loader.read(); // TODO make sure to rewrite this part
+            System.out.println("Successfully loaded from " + saveLocation);
         } catch (IOException e) {
             System.out.println("Unable to read and load restaurant from " + saveLocation);
         }

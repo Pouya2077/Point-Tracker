@@ -1,6 +1,6 @@
 package persistence;
 
-import model.Restaurant;
+import model.ApplicationState;
 import java.io.*;
 
 import org.json.JSONObject;
@@ -29,10 +29,10 @@ public class JsonSaver {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes the Restaurant to the JSON file to save it
-    // using the writer
-    public void write(Restaurant restaurant) {
-        JSONObject json = restaurant.toJson();
+    // EFFECTS: writes the ApplicationState to the JSON 
+    // file to save it using the writer
+    public void write(ApplicationState state) {
+        JSONObject json = state.toJson();
         saveToFile(json.toString());
 
     }

@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // Represents a cart class with a list
 // of food items put in the cart by the user 
 public class Cart {
@@ -120,5 +123,29 @@ public class Cart {
 
         }
         return acc;
+    }
+
+    // EFFECTS: return the cart as a Json object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food f: cart) {
+            JSONObject foodJson = new JSONObject();
+
+            foodJson.put("name", f.getName());
+            foodJson.put("pointsToBuy", f.getCostInPoints());
+            foodJson.put("money", f.getCostInMoney());
+            foodJson.put("pointsWorth", f.getPointsWorth());
+
+            jsonArray.put(foodJson);
+
+        }
+
+        json.put("cart", jsonArray);
+
+        return json;
+
     }
 }
