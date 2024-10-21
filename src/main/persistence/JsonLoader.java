@@ -1,6 +1,10 @@
 package persistence;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+import model.ApplicationState;
+import model.Cart;
+import model.Food;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,10 +30,10 @@ public class JsonLoader {
     // EFFECTS: reads the data from the source file
     // into a string, the string becomes a JSONObject which
     // we turn into a Restaurant object to return
-    public Restaurant read() throws IOException {
+    public ApplicationState read(String key) throws IOException {
         String data = readFile(sourceFile);
         JSONObject jsonObject = new JSONObject(data);
-        return makeRestaurant(jsonObject);
+        return makeApplicationState(jsonObject);
     }
 
     // EFFECTS: reads the sourceFile and turns it into data that
@@ -45,13 +49,34 @@ public class JsonLoader {
     }
 
     // EFFECTS: creates a Restaurant from the data of the JSONObject
-    private Restaurant makeRestaurant(JSONObject jsonObject) {
-        int points = jsonObject.getInt("userPoints");
+    private ApplicationState makeApplicationState(JSONObject jsonObject) {
+        JSONObject restJson = jsonObject.getJSONObject("restaurant");
+        JSONObject cartJson = jsonObject.getJSONObject("cart");
 
         Restaurant restaurant = new Restaurant();
+        int points = restJson.getInt("userPoints");
         restaurant.setUserPoints(points);
 
-        return restaurant;
+        Cart cart = new Cart();
+
+        JSONArray cartArray = cartJson.getJSONArray("cart");
+
+        for (Object js: cartArray) {
+            JSONObject foodJson = (JSONObject) js;
+            
+            int pointsToBuy = foodJson.getInt("pointsToBuy");
+            double money = foodJson.getDouble("money");
+            String name = foodJson.getString("name");
+            int pointsWorth = foodJson.getInt("pointsWorth");
+
+            Food food = new Food(name, pointsToBuy, money, pointsWorth);
+
+            cart.addFood(food);
+        }
+
+        ApplicationState state = new ApplicationState(restaurant, cart);
+
+        return state;
     }
 
 }
