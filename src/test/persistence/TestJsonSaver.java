@@ -73,7 +73,7 @@ public class TestJsonSaver {
             saver.open();
             saver.write(state);
             saver.close();
-            // TODO - come back to this test
+            // TODO - come back to this test - don't forget json files and helper function - and checkstyle
             JsonLoader loader = new JsonLoader("./data/testWriteGeneralApplicationState.json");
             ApplicationState readState = loader.read();
             Restaurant readRestaurant = readState.getRestaurant();

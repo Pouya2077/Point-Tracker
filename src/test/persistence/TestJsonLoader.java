@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import model.Restaurant;
+import model.ApplicationState;
+import model.Cart;
 
 // tests for JsonLoader class
 public class TestJsonLoader {
-// TODO - rewrite the handmade json files that are used for testing!!
+
     @Test
     void testNoSuchFileExisting() {
         JsonLoader loader = new JsonLoader("./data/noFile.json");
@@ -23,14 +25,18 @@ public class TestJsonLoader {
     }
 
     @Test
-    void testReadRestaurantZeroPoints() {
+    void testReadRestaurantZeroPointsEmptyCart() {
         JsonLoader loader = new JsonLoader(
-                "./data/testReadRestaurantZeroPoints.json");
+                "./data/testReadRestaurantZeroPointsEmptyCart.json");
 
         try {
-            Restaurant restaurant = loader.read();
-            assertEquals("Tim Horton's", restaurant.getName());
-            assertEquals(0, restaurant.getUserPoints());
+            ApplicationState readState = loader.read();
+            Restaurant readRestaurant = readState.getRestaurant();
+            Cart readCart = readState.getCart();
+            assertEquals("Tim Horton's", readRestaurant.getName());
+            assertEquals(0, readRestaurant.getUserPoints());
+            assertEquals(0, readCart.getCart().size());
+
         } catch (IOException e) {
             fail("Should not reach here - the file does exist and should be read!");
         }
@@ -38,14 +44,19 @@ public class TestJsonLoader {
     }
 
     @Test
-    void testReadRestaurantTenPoints() {
+    void testReadGeneralApplicationState() {
         JsonLoader loader = new JsonLoader(
-                "./data/testReadRestaurantTenPoints.json");
+                "./data/testReadGeneralApplicationState.json");
 
         try {
-            Restaurant restaurant = loader.read();
-            assertEquals(10, restaurant.getUserPoints());
-            assertEquals("Tim Horton's", restaurant.getName());
+            ApplicationState readState = loader.read();
+            Restaurant readRestaurant = readState.getRestaurant();
+            Cart readCart = readState.getCart();
+
+            assertEquals(10, readRestaurant.getUserPoints());
+            assertEquals("Tim Horton's", readRestaurant.getName());
+            assertEquals(3, readCart.getCart().size());
+
         } catch (IOException e) {
             fail("Should not reach here - the file does exist and should be read!");
         }
