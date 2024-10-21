@@ -1,1 +1,48 @@
-{"restaurant":{"userPoints":15,"name":"Tim Horton's","menu":[{"pointsToBuy":10,"money":3.5,"name":"Ice Capp","pointsWorth":5},{"pointsToBuy":8,"money":2.5,"name":"Coffee","pointsWorth":4},{"pointsToBuy":5,"money":3,"name":"Bagel","pointsWorth":2},{"pointsToBuy":12,"money":5.5,"name":"Tim Bits","pointsWorth":6}]},"cart":{"cart":[{"pointsToBuy":10,"money":3.5,"name":"Ice Capp","pointsWorth":5},{"pointsToBuy":5,"money":3,"name":"Bagel","pointsWorth":2}]}}
+{
+    "restaurant": {
+        "userPoints": 15,
+        "name": "Tim Horton's",
+        "menu": [
+            {
+                "pointsToBuy": 10,
+                "money": 3.5,
+                "name": "Ice Capp",
+                "pointsWorth": 5
+            },
+            {
+                "pointsToBuy": 8,
+                "money": 2.5,
+                "name": "Coffee",
+                "pointsWorth": 4
+            },
+            {
+                "pointsToBuy": 5,
+                "money": 3,
+                "name": "Bagel",
+                "pointsWorth": 2
+            },
+            {
+                "pointsToBuy": 12,
+                "money": 5.5,
+                "name": "Tim Bits",
+                "pointsWorth": 6
+            }
+        ]
+    },
+    "cart": {
+        "cart": [
+            {
+                "pointsToBuy": 10,
+                "money": 3.5,
+                "name": "Ice Capp",
+                "pointsWorth": 5
+            },
+            {
+                "pointsToBuy": 5,
+                "money": 3,
+                "name": "Bagel",
+                "pointsWorth": 2
+            }
+        ]
+    }
+}
