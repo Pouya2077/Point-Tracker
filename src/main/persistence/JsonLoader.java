@@ -29,8 +29,8 @@ public class JsonLoader {
 
     // EFFECTS: reads the data from the source file
     // into a string, the string becomes a JSONObject which
-    // we turn into a Restaurant object to return
-    public ApplicationState read(String key) throws IOException {
+    // we turn into an ApplicationState to return
+    public ApplicationState read() throws IOException {
         String data = readFile(sourceFile);
         JSONObject jsonObject = new JSONObject(data);
         return makeApplicationState(jsonObject);

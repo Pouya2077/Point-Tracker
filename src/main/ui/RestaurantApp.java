@@ -154,10 +154,10 @@ public class RestaurantApp {
     // this includes the previous restaurant and cart
     private void loadApplication() {
         try {
-            this.state = loader.read("restaurant");
+            this.state = loader.read();
             this.timmies = state.getRestaurant();
             this.cart = state.getCart();
-            
+
             System.out.println("Successfully loaded from " + saveLocation);
         } catch (IOException e) {
             System.out.println("Unable to read and load restaurant from " + saveLocation);
