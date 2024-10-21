@@ -7,12 +7,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import java.util.ArrayList;
-
 import model.Restaurant;
 import ui.RestaurantApp;
 import model.ApplicationState;
-import model.Food;
 import model.Cart;
 
 // tests for JsonSaver class
@@ -29,7 +26,7 @@ public class TestJsonSaver {
         }
 
     }
-    // TODO - rewrite the handmade json files that are used for testing!!
+
     @Test
     void testWriteZeroPointsEmptyCart() {
         Restaurant restaurant = new Restaurant();
@@ -47,6 +44,12 @@ public class TestJsonSaver {
             Restaurant readRestaurant = readState.getRestaurant();
             Cart readCart = readState.getCart();
 
+            assertEquals(RestaurantApp.FOOD1, readRestaurant.getMenuItems().get(0));
+            assertEquals(RestaurantApp.FOOD2, readRestaurant.getMenuItems().get(1));
+            assertEquals(RestaurantApp.FOOD3, readRestaurant.getMenuItems().get(2));
+            assertEquals(RestaurantApp.FOOD4, readRestaurant.getMenuItems().get(3));
+            assertEquals(4, readRestaurant.getMenuItems().size());
+
             assertEquals(0, readRestaurant.getUserPoints());
             assertEquals("Tim Horton's", readRestaurant.getName());
             assertEquals(0, readCart.getCart().size());
@@ -57,10 +60,10 @@ public class TestJsonSaver {
     }
 
     @Test
-    void testWriteGeneralRestaurant() {
+    void testWriteGeneralApplicationState() {
         Restaurant restaurant = new Restaurant();
         Cart cart = new Cart();
-        JsonSaver saver = new JsonSaver("./data/testWriteGeneralRestaurant.json");
+        JsonSaver saver = new JsonSaver("./data/testWriteGeneralApplicationState.json");
         restaurant.setUserPoints(15);
         cart.addFood(RestaurantApp.FOOD1);
         cart.addFood(RestaurantApp.FOOD3);
@@ -70,8 +73,8 @@ public class TestJsonSaver {
             saver.open();
             saver.write(state);
             saver.close();
-
-            JsonLoader loader = new JsonLoader("./data/testWriteGeneralRestaurant.json");
+            // TODO - come back to this test
+            JsonLoader loader = new JsonLoader("./data/testWriteGeneralApplicationState.json");
             ApplicationState readState = loader.read();
             Restaurant readRestaurant = readState.getRestaurant();
             Cart readCart = readState.getCart();
@@ -79,17 +82,7 @@ public class TestJsonSaver {
             assertEquals(15, readRestaurant.getUserPoints());
             assertEquals("Tim Horton's", readRestaurant.getName());
 
-            ArrayList<Food> menu = readRestaurant.getMenuItems();
-
-            assertEquals(RestaurantApp.FOOD1, menu.get(0));
-            assertEquals(RestaurantApp.FOOD2, menu.get(1));
-            assertEquals(RestaurantApp.FOOD3, menu.get(2));
-            assertEquals(RestaurantApp.FOOD4, menu.get(3));
-            assertEquals(4, menu.size());
-
             assertEquals(2, readCart.getCart().size());
-            assertEquals(RestaurantApp.FOOD1, readCart.getCart().get(0));
-            assertEquals(RestaurantApp.FOOD3, readCart.getCart().get(1));
 
         } catch (IOException e) {
             fail("Should not have caught exception here - excecution should be fine!");

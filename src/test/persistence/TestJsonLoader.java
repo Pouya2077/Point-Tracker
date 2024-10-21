@@ -8,7 +8,7 @@ import model.Restaurant;
 
 // tests for JsonLoader class
 public class TestJsonLoader {
-
+// TODO - rewrite the handmade json files that are used for testing!!
     @Test
     void testNoSuchFileExisting() {
         JsonLoader loader = new JsonLoader("./data/noFile.json");
