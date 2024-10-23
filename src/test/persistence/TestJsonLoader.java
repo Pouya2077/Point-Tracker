@@ -1,12 +1,15 @@
 package persistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import model.Restaurant;
+import ui.RestaurantApp;
 import model.ApplicationState;
 import model.Cart;
+import model.Food;
 
 // tests for JsonLoader class
 public class TestJsonLoader {
@@ -57,9 +60,26 @@ public class TestJsonLoader {
             assertEquals("Tim Horton's", readRestaurant.getName());
             assertEquals(3, readCart.getCart().size());
 
+            assertTrue(compare(RestaurantApp.FOOD1, readCart.getCart().get(0)));
+            assertTrue(compare(RestaurantApp.FOOD2, readCart.getCart().get(1)));
+            assertTrue(compare(RestaurantApp.FOOD4, readCart.getCart().get(2)));
+
         } catch (IOException e) {
             fail("Should not reach here - the file does exist and should be read!");
         }
+
+    }
+
+    // EFFECTS: compares the two foods and returns true if equal
+    public boolean compare(Food food1, Food food2) {
+        if (food1.getName().equals(food2.getName())
+                && food1.getCostInMoney() == food2.getCostInMoney()
+                && food1.getCostInPoints() == food2.getCostInPoints()
+                && food1.getPointsWorth() == food2.getPointsWorth()) {
+            return true;
+        }
+
+        return false;
 
     }
 
