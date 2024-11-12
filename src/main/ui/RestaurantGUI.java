@@ -51,10 +51,11 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: 
+    // MODIFIES: restaurant, cart, state, menu, userInput, 
+    // saveLocation, saver, and loader
     // EFFECTS: initializes the fields needed for GUI 
     // backend functionality and operations
-    public void initOperations() {
+    private void initOperations() {
         restaurant = new Restaurant();
         cart = new Cart();
         state = new ApplicationState(restaurant, cart);
@@ -76,7 +77,7 @@ public class RestaurantGUI {
 
     // MODIFIES frame, mainPanel, all buttons
     // EFFECTS: initializes the fields of class
-    public void init() {
+    private void init() {
         frame = new JFrame("Tim Horton's Point Tracker!");
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,16 +99,9 @@ public class RestaurantGUI {
 
     // MODIFIES: all buttons 
     // EFFECTS: initializes all the button fields
-    public void initButtons() {
+    private void initButtons() {
         menuButton = new JButton("Menu");
-
         pointsButton = new JButton("Current Points");
-        pointsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                label.setText("You have 0 points.");
-            }
-        });
-
         viewButton = new JButton("View Cart");;
         saveButton = new JButton("Save");
         loadButton = new JButton("Load Previous");
@@ -116,11 +110,18 @@ public class RestaurantGUI {
         totalMoneyButton = new JButton("Cart Money Worth");
         buyWithPointsButton = new JButton("Purchase With Points");
 
+        initButtonCommands();
+
+    }
+
+    private void initButtonCommands() {
+
+
     }
 
     // MODIFIES: mainPanel
     // EFFECTS: adds the buttons to the panel
-    public void addInitialButtons() {
+    private void addInitialButtons() {
         mainPanel.add(menuButton);
         mainPanel.add(pointsButton);
         mainPanel.add(viewButton);
