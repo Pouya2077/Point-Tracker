@@ -2,11 +2,12 @@ package ui;
 
 import model.*;
 
+import javax.imageio.IIOException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -31,7 +32,6 @@ public class RestaurantGUI {
     private ApplicationState state;
     private Restaurant restaurant;
     private Cart cart;
-    private String currentCommand;
     private ArrayList<Food> menu;
 
     private JsonLoader loader;
@@ -85,7 +85,7 @@ public class RestaurantGUI {
         frame.setResizable(false);
 
         label = new JLabel("Welcome To Timmies!", SwingConstants.CENTER);
-        label.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        label.setFont(new Font("Arial", Font.BOLD, 30));
         label.setBorder(BorderFactory.createEmptyBorder(100, 0, 140, 0));
         frame.add(label, BorderLayout.NORTH);
 
@@ -114,14 +114,90 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: all buttons 
+    // EFFECTS: initializes the functions of the buttons
     private void initButtonCommands() {
         pointsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                label.setText("You have 0 points.");
+                label.setText("You have " + restaurant.getUserPoints() + " points.");
+            }
+        });
+
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveGUI();
+            }
+        });
+
+        loadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                loadGUI();
+            }
+        });
+
+        canBuyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                purchasables();
             }
         });
 
 
+    }
+
+    // EFFECTS: displays all the items in the user cart which 
+    // can be purchased with the points they currently have
+    private void purchasables() {
+        ArrayList<String> list = cart.canPurchaseList(restaurant.getUserPoints());
+        ArrayList<String> inCart = cart.getFoodNames();
+
+        if (inCart.isEmpty()) {
+            label.setText("Your cart is empty.");
+        } else if (restaurant.getUserPoints() == 0) {
+            label.setText("<html>You have 0 points, <br>nothing is purchasable.</br><html>");
+        } else if (list.isEmpty()) {
+            label.setText("You cannot purchase anything.");
+        } else {
+            JTextArea textArea = new JTextArea(10, 5);
+            textArea.setEditable(false);
+
+            for (String s: list) {
+                textArea.append(s + "\n");
+            }
+            
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            JOptionPane.showMessageDialog(null, scrollPane);
+
+        }
+    }
+
+    //EFFECTS: loads the previous GUI state 
+    private void loadGUI() {
+        try {
+            state = loader.read();
+            restaurant = state.getRestaurant();
+            cart = state.getCart();
+
+            label.setText("<html>Successfully loaded <br>from " + saveLocation + ".</br></html>");
+        } catch (IOException e) {
+            label.setText("<html>Could not read <br>from " + saveLocation + ".</br></html>");
+
+        }
+    }
+
+    // EFFECTS: saves the GUI state to appropriate save location
+    private void saveGUI() {
+        try {
+            state.setRestaurant(restaurant);
+            state.setCart(cart);
+
+            saver.open();
+            saver.write(state);
+            saver.close();
+            label.setText("<html>Successfully saved <br>to " + saveLocation + ".</br></html>");
+
+        } catch (FileNotFoundException e) {
+            label.setText("Unable to save to location " + saveLocation + ".");
+        }
     }
 
     // MODIFIES: mainPanel
