@@ -115,6 +115,11 @@ public class RestaurantGUI {
     }
 
     private void initButtonCommands() {
+        pointsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText("You have 0 points.");
+            }
+        });
 
 
     }
