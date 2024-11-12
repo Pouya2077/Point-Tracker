@@ -5,6 +5,13 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import java.util.Scanner;
+import persistence.*;
 
 // Class responsible for being the GUI of application
 public class RestaurantGUI {
@@ -21,7 +28,17 @@ public class RestaurantGUI {
     private JButton buyWithPointsButton;
     private JLabel label;
 
-    // TODO
+    private ApplicationState state;
+    private Restaurant restaurant;
+    private Cart cart;
+    private String currentCommand;
+    private ArrayList<Food> menu;
+
+    private JsonLoader loader;
+    private JsonSaver saver;
+    private Scanner userInput;
+    private String saveLocation;
+
 
     // MODIFIES: this, all fields
     // EFFECTS: initializes fields of GUI and runs it 
@@ -31,6 +48,29 @@ public class RestaurantGUI {
         initOperations();
 
         frame.setVisible(true);
+
+    }
+
+    // MODIFIES: 
+    // EFFECTS: initializes the fields needed for GUI 
+    // backend functionality and operations
+    public void initOperations() {
+        restaurant = new Restaurant();
+        cart = new Cart();
+        state = new ApplicationState(restaurant, cart);
+
+        menu = new ArrayList<Food>();
+        menu.add(RestaurantApp.FOOD1);
+        menu.add(RestaurantApp.FOOD2);
+        menu.add(RestaurantApp.FOOD3);
+        menu.add(RestaurantApp.FOOD4);
+
+        userInput = new Scanner(System.in);
+        userInput.useDelimiter("\r?\n|\r");
+
+        saveLocation = "./data/restaurantApp.json";
+        saver = new JsonSaver(saveLocation);
+        loader = new JsonLoader(saveLocation);
 
     }
 
@@ -90,13 +130,6 @@ public class RestaurantGUI {
         mainPanel.add(totalPointsButton);
         mainPanel.add(totalMoneyButton);
         mainPanel.add(buyWithPointsButton);
-
-    }
-
-    // MODIFIES: 
-    // EFFECTS: initializes the fields needed for GUI 
-    // backend functionality and operations
-    public void initOperations() {
 
     }
 
