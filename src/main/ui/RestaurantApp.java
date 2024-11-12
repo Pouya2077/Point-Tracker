@@ -361,4 +361,8 @@ public class RestaurantApp {
         System.out.println("-----------------------------------");
     }
 
+    public static void main(String[] args) throws Exception {
+        new RestaurantApp();
+    }
+
 }
