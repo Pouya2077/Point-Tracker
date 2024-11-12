@@ -55,7 +55,7 @@ public class Cart {
     public int totalPoints() {
         int acc = 0;
         for (Food f : cart) {
-            acc += f.getPointsWorth();
+            acc += f.getCostInPoints();
         }
         return acc;
     }

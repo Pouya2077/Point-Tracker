@@ -2,12 +2,10 @@ package ui;
 
 import model.*;
 
-import javax.imageio.IIOException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -39,9 +37,8 @@ public class RestaurantGUI {
     private Scanner userInput;
     private String saveLocation;
 
-
     // MODIFIES: this, all fields
-    // EFFECTS: initializes fields of GUI and runs it 
+    // EFFECTS: initializes fields of GUI and runs it
     public RestaurantGUI() {
         init();
 
@@ -51,9 +48,9 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: restaurant, cart, state, menu, userInput, 
+    // MODIFIES: restaurant, cart, state, menu, userInput,
     // saveLocation, saver, and loader
-    // EFFECTS: initializes the fields needed for GUI 
+    // EFFECTS: initializes the fields needed for GUI
     // backend functionality and operations
     private void initOperations() {
         restaurant = new Restaurant();
@@ -97,12 +94,12 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: all buttons 
+    // MODIFIES: all buttons
     // EFFECTS: initializes all the button fields
     private void initButtons() {
         menuButton = new JButton("Menu");
         pointsButton = new JButton("Current Points");
-        viewButton = new JButton("View Cart");;
+        viewButton = new JButton("View Cart");
         saveButton = new JButton("Save");
         loadButton = new JButton("Load Previous");
         canBuyButton = new JButton("Can Buy With Points");
@@ -114,7 +111,7 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: all buttons 
+    // MODIFIES: all buttons
     // EFFECTS: initializes the functions of the buttons
     private void initButtonCommands() {
         pointsButton.addActionListener(new ActionListener() {
@@ -123,6 +120,78 @@ public class RestaurantGUI {
             }
         });
 
+        initSerializers();
+
+        canBuyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                purchasables();
+            }
+        });
+
+        viewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                viewCart();
+            }
+        });
+
+        initWorthFunctions();
+
+        buyWithPointsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                purchaseWithPoints();
+            }
+        });
+
+        initComplexCommands();
+
+    }
+
+    // MODIFIES: add, menu, remove, an buy with money buttons 
+    // EFFECTS: adds functionality for the complex buttons 
+    private void initComplexCommands() {
+
+    }
+
+    // EFFECTS: purchases all items in the cart with current points
+    private void purchaseWithPoints() {
+        int pointsLeft = cart.purchaseWithPoints(restaurant.getUserPoints());
+        restaurant.setPoints(pointsLeft);
+        label.setText("\nYou have " + pointsLeft + " points left.\n");
+
+    }
+
+    // EFFECTS: initializes the functions that determine cart worth
+    private void initWorthFunctions() {
+        totalPointsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pointsWorth();
+            }
+        });
+
+        totalMoneyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                moneyWorth();
+            }
+        });
+    }
+
+    // EFFECTS: displays the points that the cart is worth
+    private void pointsWorth() {
+        int worth = cart.totalPoints();
+        label.setText("Your cart is worth " + worth + " points.");
+
+    }
+
+    // EFFECTS: displays the money the cart is worth
+    private void moneyWorth() {
+        double worth = cart.totalMoney();
+        label.setText("Your cart is worth " + "$" + worth + ".");
+
+    }
+
+    // EFFECTS: initialize the serialization commands for
+    // their respective buttons
+    private void initSerializers() {
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 saveGUI();
@@ -135,17 +204,32 @@ public class RestaurantGUI {
             }
         });
 
-        canBuyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                purchasables();
-            }
-        });
+    }
 
+    // EFFECTS: displays the items currently in the cart
+    private void viewCart() {
+        ArrayList<Food> foodList = cart.getCart();
+        ArrayList<String> names = new ArrayList<String>();
+
+        for (Food food : foodList) {
+            names.add(food.getName());
+
+        }
+
+        JTextArea textArea = new JTextArea(10, 5);
+        textArea.setEditable(false);
+
+        for (String name : names) {
+            textArea.append(name + "\n");
+        }
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        JOptionPane.showMessageDialog(null, scrollPane);
 
     }
 
-    // EFFECTS: displays all the items in the user cart which 
-    // can be purchased with the points they currently have
+    // EFFECTS: displays all the items in the user cart which
+    // can be purchased with the points they have
     private void purchasables() {
         ArrayList<String> list = cart.canPurchaseList(restaurant.getUserPoints());
         ArrayList<String> inCart = cart.getFoodNames();
@@ -160,17 +244,17 @@ public class RestaurantGUI {
             JTextArea textArea = new JTextArea(10, 5);
             textArea.setEditable(false);
 
-            for (String s: list) {
+            for (String s : list) {
                 textArea.append(s + "\n");
             }
-            
+
             JScrollPane scrollPane = new JScrollPane(textArea);
             JOptionPane.showMessageDialog(null, scrollPane);
 
         }
     }
 
-    //EFFECTS: loads the previous GUI state 
+    // EFFECTS: loads the previous GUI state
     private void loadGUI() {
         try {
             state = loader.read();
