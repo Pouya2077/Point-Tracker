@@ -112,6 +112,8 @@ public class RestaurantGUI {
         totalMoneyButton = new JButton("Cart Money Worth");
         buyWithPointsButton = new JButton("Purchase with Points");
         buywithMoneyButton = new JButton("Purchase with Money");
+        yesButton = new JButton("Add");
+        noButton = new JButton("Remove");
 
         backButton = new JButton("Back");
         cappButton = new JButton("Ice Capp");
@@ -277,15 +279,14 @@ public class RestaurantGUI {
         });
     }
 
-    // MODIFIES: label, cart, 
+    // MODIFIES: label, cart,
     // EFFECTS: give the user the option to add or remove the given
     // food to their cart with a pop up
     private void optionToAdd(Food food) {
-        JOptionPane optionPane = new JOptionPane("What would you like to do?",
+        JOptionPane optionPane = new JOptionPane(food.getName() + " costs " + "$" + food.getCostInMoney() + " or "
+                + food.getCostInPoints() + " points, and gives "
+                + food.getPointsWorth() + " points when bought with money.",
                 JOptionPane.QUESTION_MESSAGE);
-
-        yesButton = new JButton("Add");
-        noButton = new JButton("Remove");
 
         JDialog dialog = optionPane.createDialog(null, "Add or Remove " + food.getName());
 
