@@ -34,6 +34,9 @@ public class RestaurantGUI {
     private JButton bagelButton;
     private JButton bitsButton;
 
+    private JButton yesButton;
+    private JButton noButton;
+
     private ApplicationState state;
     private Restaurant restaurant;
     private Cart cart;
@@ -236,8 +239,8 @@ public class RestaurantGUI {
         JOptionPane optionPane = new JOptionPane("What would you like to do?",
                 JOptionPane.QUESTION_MESSAGE);
 
-        JButton yesButton = new JButton("Add");
-        JButton noButton = new JButton("Remove");
+        yesButton = new JButton("Add");
+        noButton = new JButton("Remove");
 
         JDialog dialog = optionPane.createDialog(null, "Add or Remove " + food.getName());
 
