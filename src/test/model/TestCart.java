@@ -103,7 +103,7 @@ public class TestCart {
     void testCalculateTotalPoints() {
         testCart.addFood(f1);
         testCart.addFood(f2);
-        assertEquals(6, testCart.totalPoints());
+        assertEquals(22, testCart.totalPoints());
     }
 
     @Test

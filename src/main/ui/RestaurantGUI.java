@@ -77,7 +77,7 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES frame, mainPanel, all buttons
+    // MODIFIES frame, mainPanel, label, all buttons
     // EFFECTS: initializes the fields of class
     private void init() {
         frame = new JFrame("Tim Horton's Point Tracker!");
@@ -123,7 +123,7 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: all buttons
+    // MODIFIES: label, all buttons
     // EFFECTS: initializes the functions of the buttons
     private void initButtonCommands() {
         pointsButton.addActionListener(new ActionListener() {
@@ -150,7 +150,7 @@ public class RestaurantGUI {
 
         initBuyButtons();
 
-        initComplexCommands();
+        initMenuButton();
 
     }
 
@@ -170,6 +170,9 @@ public class RestaurantGUI {
         });
     }
 
+    // MODIFIES: label, buyWithMoneyButton
+    // EFFECTS: the command of the buyWithMoneyButton it runs
+    // when clicked
     private void purchaseWithMoney() {
         JTextField textArea = new JTextField(10);
 
@@ -200,9 +203,9 @@ public class RestaurantGUI {
         label.setText("<html>How much would you <br>like to spend ($)?</br></html>");
     }
 
-    // MODIFIES: add, menu, remove, an buy with money buttons
-    // EFFECTS: adds functionality for the complex buttons
-    private void initComplexCommands() {
+    // MODIFIES: menuButton
+    // EFFECTS: adds functionality for the menu button
+    private void initMenuButton() {
         menuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 displayOptions();
@@ -211,6 +214,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: mainPanel, label
     // EFFECTS: displays the menu options of the restaurant
     private void displayOptions() {
         mainPanel.removeAll();
@@ -229,6 +233,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: mainPanel, label, backButton
     // EFFECTS: adds the menu button commands
     private void initMenuCommands() {
         backButton.addActionListener(new ActionListener() {
@@ -244,6 +249,7 @@ public class RestaurantGUI {
         foodCommands();
     }
 
+    // MODIFIES: cappButton, coffeeButton, bagelButton, bitsButton
     // EFFECTS: add commands for food buttons of menu
     private void foodCommands() {
         cappButton.addActionListener(new ActionListener() {
@@ -271,8 +277,9 @@ public class RestaurantGUI {
         });
     }
 
-    // EFFECTS: give the user the option to add the given food
-    // to their cart with a pop up
+    // MODIFIES: label, cart, 
+    // EFFECTS: give the user the option to add or remove the given
+    // food to their cart with a pop up
     private void optionToAdd(Food food) {
         JOptionPane optionPane = new JOptionPane("What would you like to do?",
                 JOptionPane.QUESTION_MESSAGE);
@@ -305,6 +312,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: restaurant, label
     // EFFECTS: purchases all items in the cart with current points
     private void purchaseWithPoints() {
         int pointsLeft = cart.purchaseWithPoints(restaurant.getUserPoints());
@@ -314,6 +322,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: totalPointsButton
     // EFFECTS: initializes the functions that determine cart worth
     private void initWorthFunctions() {
         totalPointsButton.addActionListener(new ActionListener() {
@@ -329,6 +338,7 @@ public class RestaurantGUI {
         });
     }
 
+    // MODIFIES: cart, label
     // EFFECTS: displays the points that the cart is worth
     private void pointsWorth() {
         int worth = cart.totalPoints();
@@ -336,6 +346,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: cart, label
     // EFFECTS: displays the money the cart is worth
     private void moneyWorth() {
         double worth = cart.totalMoney();
@@ -343,6 +354,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: saveButton, loadButton
     // EFFECTS: initialize the serialization commands for
     // their respective buttons
     private void initSerializers() {
@@ -382,6 +394,7 @@ public class RestaurantGUI {
 
     }
 
+    // MODIFIES: label
     // EFFECTS: displays all the items in the user cart which
     // can be purchased with the points they have
     private void purchasables() {
@@ -408,6 +421,7 @@ public class RestaurantGUI {
         }
     }
 
+    // MODIFIES: state, restaurant, cart, label
     // EFFECTS: loads the previous GUI state
     private void loadGUI() {
         try {
@@ -422,6 +436,7 @@ public class RestaurantGUI {
         }
     }
 
+    // MODIFIES: state, saver, label
     // EFFECTS: saves the GUI state to appropriate save location
     private void saveGUI() {
         try {
