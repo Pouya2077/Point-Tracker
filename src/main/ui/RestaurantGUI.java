@@ -309,7 +309,8 @@ public class RestaurantGUI {
     private void purchaseWithPoints() {
         int pointsLeft = cart.purchaseWithPoints(restaurant.getUserPoints());
         restaurant.setPoints(pointsLeft);
-        label.setText("\nYou have " + pointsLeft + " points left.\n");
+        label.setText("<html>You have " + pointsLeft
+                + " points left after purchasing <br>items in your cart with points.</br></html>");
 
     }
 
