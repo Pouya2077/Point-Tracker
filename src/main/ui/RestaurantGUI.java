@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import persistence.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +9,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import java.util.Scanner;
-import persistence.*;
 
 // Class responsible for being the GUI of application
 public class RestaurantGUI {
@@ -27,6 +25,7 @@ public class RestaurantGUI {
     private JButton totalPointsButton;
     private JButton totalMoneyButton;
     private JButton buyWithPointsButton;
+    private JButton buywithMoneyButton;
 
     private JButton backButton;
     private JButton cappButton;
@@ -44,7 +43,6 @@ public class RestaurantGUI {
 
     private JsonLoader loader;
     private JsonSaver saver;
-    private Scanner userInput;
     private String saveLocation;
 
     // MODIFIES: this, all fields
@@ -72,9 +70,6 @@ public class RestaurantGUI {
         menu.add(RestaurantApp.FOOD2);
         menu.add(RestaurantApp.FOOD3);
         menu.add(RestaurantApp.FOOD4);
-
-        userInput = new Scanner(System.in);
-        userInput.useDelimiter("\r?\n|\r");
 
         saveLocation = "./data/restaurantApp.json";
         saver = new JsonSaver(saveLocation);
@@ -112,10 +107,11 @@ public class RestaurantGUI {
         viewButton = new JButton("View Cart");
         saveButton = new JButton("Save");
         loadButton = new JButton("Load Previous");
-        canBuyButton = new JButton("Can Buy With Points");
+        canBuyButton = new JButton("Can Buy with Points");
         totalPointsButton = new JButton("Cart Points Worth");
         totalMoneyButton = new JButton("Cart Money Worth");
-        buyWithPointsButton = new JButton("Purchase With Points");
+        buyWithPointsButton = new JButton("Purchase with Points");
+        buywithMoneyButton = new JButton("Purchase with Money");
 
         backButton = new JButton("Back");
         cappButton = new JButton("Ice Capp");
@@ -152,14 +148,56 @@ public class RestaurantGUI {
 
         initWorthFunctions();
 
+        initBuyButtons();
+
+        initComplexCommands();
+
+    }
+
+    // EFFECTS: initializes the commands of the purchasing buttons
+    private void initBuyButtons() {
         buyWithPointsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 purchaseWithPoints();
             }
         });
 
-        initComplexCommands();
+        buywithMoneyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                purchaseWithMoney();
 
+            }
+        });
+    }
+
+    private void purchaseWithMoney() {
+        JTextField textArea = new JTextField(10);
+
+        JButton submit = new JButton("Submit");
+        submit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String userInput = textArea.getText();
+
+                try {
+                    double input = Double.parseDouble(userInput);
+                    int pointsEarned = cart.purchaseWithMoney(input);
+                    restaurant.addPoints(pointsEarned);
+
+                    label.setText("You spent " + input + "$ and earned " + pointsEarned + " points!");
+                    textArea.setVisible(false);
+                    submit.setVisible(false);
+
+                } catch (NumberFormatException ex) {
+                    label.setText("That is not a valid input, try again.");
+
+                }
+
+            }
+        });
+
+        mainPanel.add(textArea);
+        mainPanel.add(submit);
+        label.setText("<html>How much would you <br>like to spend ($)?</br></html>");
     }
 
     // MODIFIES: add, menu, remove, an buy with money buttons
@@ -262,7 +300,7 @@ public class RestaurantGUI {
             }
         });
 
-        optionPane.setOptions(new Object[] {yesButton, noButton});
+        optionPane.setOptions(new Object[] { yesButton, noButton });
         dialog.setVisible(true);
 
     }
@@ -300,7 +338,7 @@ public class RestaurantGUI {
     // EFFECTS: displays the money the cart is worth
     private void moneyWorth() {
         double worth = cart.totalMoney();
-        label.setText("Your cart is worth " + "$" + worth + ".");
+        label.setText("Your cart is worth " + "$" + worth);
 
     }
 
@@ -411,6 +449,7 @@ public class RestaurantGUI {
         mainPanel.add(totalPointsButton);
         mainPanel.add(totalMoneyButton);
         mainPanel.add(buyWithPointsButton);
+        mainPanel.add(buywithMoneyButton);
 
     }
 
