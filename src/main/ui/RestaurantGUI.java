@@ -16,6 +16,8 @@ import persistence.*;
 public class RestaurantGUI {
     private JFrame frame;
     private JPanel mainPanel;
+    private JLabel label;
+
     private JButton menuButton;
     private JButton pointsButton;
     private JButton viewButton;
@@ -25,7 +27,12 @@ public class RestaurantGUI {
     private JButton totalPointsButton;
     private JButton totalMoneyButton;
     private JButton buyWithPointsButton;
-    private JLabel label;
+
+    private JButton backButton;
+    private JButton cappButton;
+    private JButton coffeeButton;
+    private JButton bagelButton;
+    private JButton bitsButton;
 
     private ApplicationState state;
     private Restaurant restaurant;
@@ -107,6 +114,12 @@ public class RestaurantGUI {
         totalMoneyButton = new JButton("Cart Money Worth");
         buyWithPointsButton = new JButton("Purchase With Points");
 
+        backButton = new JButton("Back");
+        cappButton = new JButton("Ice Capp");
+        coffeeButton = new JButton("Coffee");
+        bagelButton = new JButton("Bagel");
+        bitsButton = new JButton("Tim Bits");
+
         initButtonCommands();
 
     }
@@ -146,9 +159,108 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES: add, menu, remove, an buy with money buttons 
-    // EFFECTS: adds functionality for the complex buttons 
+    // MODIFIES: add, menu, remove, an buy with money buttons
+    // EFFECTS: adds functionality for the complex buttons
     private void initComplexCommands() {
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                displayOptions();
+            }
+        });
+
+    }
+
+    // EFFECTS: displays the menu options of the restaurant
+    private void displayOptions() {
+        mainPanel.removeAll();
+        label.setText("Our Menu...");
+
+        initMenuCommands();
+
+        mainPanel.add(backButton);
+        mainPanel.add(cappButton);
+        mainPanel.add(coffeeButton);
+        mainPanel.add(bagelButton);
+        mainPanel.add(bitsButton);
+
+        mainPanel.revalidate();
+        mainPanel.repaint();
+
+    }
+
+    // EFFECTS: adds the menu button commands
+    private void initMenuCommands() {
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                addInitialButtons();
+                mainPanel.revalidate();
+                mainPanel.repaint();
+                label.setText("Welcome to Timmies!");
+            }
+        });
+
+        foodCommands();
+    }
+
+    // EFFECTS: add commands for food buttons of menu
+    private void foodCommands() {
+        cappButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                optionToAdd(RestaurantApp.FOOD1);
+            }
+        });
+
+        coffeeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                optionToAdd(RestaurantApp.FOOD2);
+            }
+        });
+
+        bagelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                optionToAdd(RestaurantApp.FOOD3);
+            }
+        });
+
+        bitsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                optionToAdd(RestaurantApp.FOOD4);
+            }
+        });
+    }
+
+    // EFFECTS: give the user the option to add the given food
+    // to their cart with a pop up
+    private void optionToAdd(Food food) {
+        JOptionPane optionPane = new JOptionPane("What would you like to do?",
+                JOptionPane.QUESTION_MESSAGE);
+
+        JButton yesButton = new JButton("Add");
+        JButton noButton = new JButton("Remove");
+
+        JDialog dialog = optionPane.createDialog(null, "Add or Remove " + food.getName());
+
+        yesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText(food.getName() + " added!");
+                cart.addFood(food);
+                optionPane.setValue(JOptionPane.YES_OPTION);
+                dialog.dispose();
+            }
+        });
+
+        noButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText(food.getName() + " removed!");
+                cart.removeFood(food);
+                optionPane.setValue(JOptionPane.NO_OPTION);
+                dialog.dispose();
+            }
+        });
+
+        optionPane.setOptions(new Object[] {yesButton, noButton});
+        dialog.setVisible(true);
 
     }
 
