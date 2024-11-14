@@ -39,21 +39,31 @@ In this case X would be Food (menu items) that the user adds to Cart (Y).
 
 ## Instructions for End User
 
-- You can add an X to a Y (food/meny item class to the cart class) by first clicking the menu button, this will take you to another screen where you can choose the menu item you would like to add or remove from your cart. 
+1. You can add an X to a Y (food/meny item class to the cart class) by first clicking the menu button. 
+    - This will take you to another screen where you can choose the menu item you would like to add or remove from your cart. 
 
-- You can generate the first required action related to the user story "adding X's to a Y" by clicking the "Can Buy With Points" button, which will display which menu items you can purchase with the points you currently have. 
+2. You can generate the first required action related to the user story "adding X's to a Y" by clicking the "Can Buy With Points" button. 
+    - This will display which menu items you can purchase with the points you currently have. 
 
-- You can generate the second required action related to the user story "adding X's to a Y" by clicking the view cart button, which will show every single item you currently have in your cart. 
+3. You can generate the second required action related to the user story "adding X's to a Y" by clicking the view cart button. 
+    - This will show every single item you currently have in your cart. 
 
-- You can generate a third required action related to the user story "adding X's to a Y" by clicking the "Purchase with Money" button, which allows the user to specify the amount of money they want to spend and adds points to their account with respect to what they purchased.
+4. You can generate a third required action related to the user story "adding X's to a Y" by clicking the "Purchase with Money" button. 
+    - This allows the user to specify the amount of money they want to spend and adds points to their account with respect to what they purchased.
 
-- You can generate a fourth required action related to the user story "adding X's to a Y" by clicking the "Purchase with Points" button, which purchases as many items in the user cart with the user's points until their points run out.
+5. You can generate a fourth required action related to the user story "adding X's to a Y" by clicking the "Purchase with Points" button. 
+    - This purchases as many items in the user cart with the user's points until their points run out.
 
-- You can generate other required actions related to "adding X's to a Y" clicking "Current Points," "Cart Points Worth," or "Cart Money Worth" which show how many points the user has currently, the points to purchase everything in the cart, and the money to purchase everything in the cart respectively. 
+6. You can generate other required actions by clicking "Current Points," "Cart Points Worth," or "Cart Money Worth"   
+    - These will show how many points the user has currently, the points to purchase everything in the cart, and the money to purchase everything in the cart respectively. 
 
-- The visual component can be located by clicking the "Purchase with Money," "Purchase with Points," "Save," or "Load" buttons which display a success animation upon being clicked. The file used for the visual component can be found in the project folder. 
+7. The visual component can be located by clicking the "Purchase with Money," "Purchase with Points," "Save," or "Load" buttons. 
+    - These display a success animation upon being clicked. 
+    - The file used for the visual component can be found in the project folder. 
 
-- You can save the state of the application or load the state of the application by clicking the "Save" or "Load" buttons respectively. The state is saved to a JSON file that the terminal GUI also used. Likewise, loading the application reads from this save JSON file and parses the data to the appropriate class objects. 
+8. You can save the state of the application or load the state of the application by clicking the "Save" or "Load" buttons respectively. 
+    - The state is saved to a JSON file that the terminal GUI also used. 
+    - Loading the application reads from this save JSON file and parses the data to the appropriate class objects. 
 
 
 
