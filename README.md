@@ -62,8 +62,8 @@ In this case X would be Food (menu items) that the user adds to Cart (Y).
     - The file used for the visual component can be found in the project folder. 
 
 8. You can save the state of the application or load the state of the application by clicking the "Save" or "Load" buttons respectively. 
-    - The state is saved to a JSON file that the terminal GUI also used. 
-    - Loading the application reads from this save JSON file and parses the data to the appropriate class objects. 
+    - The state is saved to a JSON file that the terminal GUI also uses. 
+    - Loading the application reads from this saved JSON file and parses the data to the appropriate class objects. 
 
 
 
