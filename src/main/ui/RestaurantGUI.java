@@ -45,6 +45,9 @@ public class RestaurantGUI {
     private JsonSaver saver;
     private String saveLocation;
 
+    private ImageIcon image;
+    private JLabel imageLabel;
+
     // MODIFIES: this, all fields
     // EFFECTS: initializes fields of GUI and runs it
     public RestaurantGUI() {
@@ -77,7 +80,7 @@ public class RestaurantGUI {
 
     }
 
-    // MODIFIES frame, mainPanel, label, all buttons
+    // MODIFIES frame, mainPanel, label, all buttons, and image
     // EFFECTS: initializes the fields of class
     private void init() {
         frame = new JFrame("Tim Horton's Point Tracker!");
@@ -97,6 +100,18 @@ public class RestaurantGUI {
         addInitialButtons();
         frame.add(mainPanel, BorderLayout.CENTER);
 
+        image = new ImageIcon("checkMark.png");
+        Image imageIcon = image.getImage();
+        Image scaledImage = imageIcon.getScaledInstance(100, 90, Image.SCALE_SMOOTH);
+        ImageIcon newImage = new ImageIcon(scaledImage);
+        imageLabel = new JLabel(newImage);
+
+    }
+
+    // EFFECTS: creates a pop-up image
+    private void imageScreen() {
+        JOptionPane.showMessageDialog(null, imageLabel,
+                "Success!", JOptionPane.PLAIN_MESSAGE);
     }
 
     // MODIFIES: all buttons
