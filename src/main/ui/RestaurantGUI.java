@@ -207,6 +207,8 @@ public class RestaurantGUI {
                     textArea.setVisible(false);
                     submit.setVisible(false);
 
+                    imageScreen();
+
                 } catch (NumberFormatException ex) {
                     label.setText("That is not a valid input, try again.");
 
@@ -335,6 +337,7 @@ public class RestaurantGUI {
         restaurant.setPoints(pointsLeft);
         label.setText("<html>You have " + pointsLeft
                 + " points left after purchasing <br>items in your cart with points.</br></html>");
+        imageScreen();
 
     }
 
@@ -446,6 +449,7 @@ public class RestaurantGUI {
             cart = state.getCart();
 
             label.setText("<html>Successfully loaded <br>from " + saveLocation + ".</br></html>");
+            imageScreen();
         } catch (IOException e) {
             label.setText("<html>Could not read <br>from " + saveLocation + ".</br></html>");
 
@@ -463,6 +467,7 @@ public class RestaurantGUI {
             saver.write(state);
             saver.close();
             label.setText("<html>Successfully saved <br>to " + saveLocation + ".</br></html>");
+            imageScreen();
 
         } catch (FileNotFoundException e) {
             label.setText("Unable to save to location " + saveLocation + ".");
