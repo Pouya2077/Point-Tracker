@@ -345,11 +345,25 @@ public class RestaurantGUI {
     // MODIFIES: restaurant, label
     // EFFECTS: purchases all items in the cart with current points
     private void purchaseWithPoints() {
-        int pointsLeft = cart.purchaseWithPoints(restaurant.getUserPoints());
-        restaurant.setPoints(pointsLeft);
-        label.setText("<html>You have " + pointsLeft
-                + " points left after purchasing <br>items in your cart with points.</br></html>");
-        imageScreen();
+        if (restaurant.getUserPoints() == 0) {
+            label.setText("<html>You have 0 points, cannot <br>purchase anything.</br></html>");
+        } else if (cart.getCart().isEmpty()) {
+            label.setText("<html>Your cart is empty, cannot <br>purchase anything.</br></html>");
+        } else {
+            int currentPoints = restaurant.getUserPoints();
+            int pointsLeft = cart.purchaseWithPoints(restaurant.getUserPoints());
+            if (currentPoints == pointsLeft) {
+                label.setText("<html>Nothing in your cart is purchasable <br>with "
+                        + restaurant.getUserPoints() + " points.</br></html>");
+            } else {
+                restaurant.setPoints(pointsLeft);
+                label.setText("<html>You have " + pointsLeft
+                        + " points left after purchasing <br>items in your cart with points.</br></html>");
+                imageScreen();
+
+            }
+
+        }
 
     }
 
