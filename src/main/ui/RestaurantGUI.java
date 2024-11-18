@@ -421,7 +421,10 @@ public class RestaurantGUI {
         }
 
         JScrollPane scrollPane = new JScrollPane(textArea);
-        JOptionPane.showMessageDialog(null, scrollPane);
+        JOptionPane optionPane = new JOptionPane(scrollPane, JOptionPane.PLAIN_MESSAGE);
+
+        JDialog dialog = optionPane.createDialog("Your Cart Contents");
+        dialog.setVisible(true);
 
     }
 
