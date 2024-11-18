@@ -185,6 +185,7 @@ public class RestaurantGUI {
 
             }
         });
+
     }
 
     // MODIFIES: label, buyWithMoneyButton
@@ -215,6 +216,7 @@ public class RestaurantGUI {
                 }
 
             }
+
         });
 
         mainPanel.add(textArea);
