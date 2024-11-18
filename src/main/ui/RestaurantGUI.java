@@ -257,6 +257,10 @@ public class RestaurantGUI {
     private void initMenuCommands() {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                removeListeners(cappButton);
+                removeListeners(coffeeButton);
+                removeListeners(bagelButton);
+                removeListeners(bitsButton);
                 mainPanel.removeAll();
                 addInitialButtons();
                 mainPanel.revalidate();
@@ -312,7 +316,6 @@ public class RestaurantGUI {
                 label.setText(food.getName() + " added!");
                 cart.addFood(food);
                 optionPane.setValue(JOptionPane.YES_OPTION);
-                dialog.dispose();
             }
         });
 
@@ -321,12 +324,21 @@ public class RestaurantGUI {
                 label.setText(food.getName() + " removed!");
                 cart.removeFood(food);
                 optionPane.setValue(JOptionPane.NO_OPTION);
-                dialog.dispose();
             }
         });
 
         optionPane.setOptions(new Object[] { yesButton, noButton });
         dialog.setVisible(true);
+
+        removeListeners(yesButton);
+        removeListeners(noButton);
+
+    }
+
+    private void removeListeners(JButton button) {
+        for (ActionListener al: button.getActionListeners()) {
+            button.removeActionListener(al);
+        }
 
     }
 
@@ -425,7 +437,7 @@ public class RestaurantGUI {
         } else if (restaurant.getUserPoints() == 0) {
             label.setText("<html>You have 0 points, <br>nothing is purchasable.</br><html>");
         } else if (list.isEmpty()) {
-            label.setText("You cannot purchase anything.");
+            label.setText("<html>You cannot purchase anything <br>with your current points.</br></html>");
         } else {
             JTextArea textArea = new JTextArea(10, 5);
             textArea.setEditable(false);
