@@ -336,7 +336,7 @@ public class RestaurantGUI {
     }
 
     private void removeListeners(JButton button) {
-        for (ActionListener al: button.getActionListeners()) {
+        for (ActionListener al : button.getActionListeners()) {
             button.removeActionListener(al);
         }
 
@@ -373,7 +373,7 @@ public class RestaurantGUI {
     // EFFECTS: displays the points that the cart is worth
     private void pointsWorth() {
         int worth = cart.totalPoints();
-        label.setText("Your cart is worth " + worth + " points.");
+        label.setText("<html>To buy everything in your <br>cart you need " + worth + " points.</br></html>");
 
     }
 
@@ -381,7 +381,7 @@ public class RestaurantGUI {
     // EFFECTS: displays the money the cart is worth
     private void moneyWorth() {
         double worth = cart.totalMoney();
-        label.setText("Your cart is worth " + "$" + worth);
+        label.setText("<html>To buy everything in your <br>cart you need $" + worth + ".</br></html>");
 
     }
 
@@ -442,7 +442,7 @@ public class RestaurantGUI {
         } else if (list.isEmpty()) {
             label.setText("<html>You cannot purchase anything <br>with your current points.</br></html>");
         } else {
-            JTextArea textArea = new JTextArea(10, 5);
+            JTextArea textArea = new JTextArea(10, 10);
             textArea.setEditable(false);
 
             for (String s : list) {
@@ -450,7 +450,10 @@ public class RestaurantGUI {
             }
 
             JScrollPane scrollPane = new JScrollPane(textArea);
-            JOptionPane.showMessageDialog(null, scrollPane);
+            JOptionPane optionPane = new JOptionPane(scrollPane, JOptionPane.PLAIN_MESSAGE);
+
+            JDialog dialog = optionPane.createDialog("Buy With Current Points");
+            dialog.setVisible(true);
 
         }
     }
