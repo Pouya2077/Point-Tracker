@@ -205,8 +205,8 @@ public class RestaurantGUI {
                     restaurant.addPoints(pointsEarned);
 
                     label.setText("You spent " + input + "$ and earned " + pointsEarned + " points!");
-                    textArea.setVisible(false);
-                    submit.setVisible(false);
+                    mainPanel.remove(textArea);
+                    mainPanel.remove(submit);
 
                     imageScreen();
 
