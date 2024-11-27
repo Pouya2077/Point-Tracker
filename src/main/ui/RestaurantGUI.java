@@ -55,6 +55,12 @@ public class RestaurantGUI {
 
         initOperations();
 
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                RestaurantApp.printLog(EventLog.getInstance());
+            }
+        });
+
         frame.setVisible(true);
 
     }
