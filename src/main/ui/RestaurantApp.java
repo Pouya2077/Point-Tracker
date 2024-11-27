@@ -12,6 +12,9 @@ import model.Food;
 import model.Cart;
 import model.ApplicationState;
 
+import model.Event;
+import model.EventLog;
+
 // Represents the ui used for the application, 
 // can take in user input and respond to it, 
 // will hold the user cart and the restaurant 
@@ -70,6 +73,7 @@ public class RestaurantApp {
 
             if (currentCommand.equals("q")) {
                 canRun = false;
+                printLog(EventLog.getInstance());
             } else {
                 processCommand(currentCommand);
             }
@@ -363,6 +367,13 @@ public class RestaurantApp {
 
     public static void main(String[] args) throws Exception {
         new RestaurantApp();
+    }
+
+    public static void printLog(EventLog el) {
+        for (Event event : el) {
+            System.out.println("\n" + event.toString() + "\n");
+        }
+
     }
 
 }

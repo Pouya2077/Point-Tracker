@@ -28,6 +28,7 @@ public class Cart {
     // user to the back of the cart
     public void addFood(Food food) {
         cart.add(food);
+        EventLog.getInstance().logEvent(new Event("Added " + food.getName() + "."));
     }
 
     // REQUIRES: cart is not empty
@@ -36,6 +37,7 @@ public class Cart {
     // the user from the cart
     public void removeFood(Food food) {
         cart.remove(food);
+        EventLog.getInstance().logEvent(new Event("Removed " + food.getName() + "."));
     }
 
     // REQUIRES: cart is not empty
@@ -101,7 +103,7 @@ public class Cart {
 
             }
         }
-
+        EventLog.getInstance().logEvent(new Event("Items purchased with points."));
         return userPoints;
 
     }
@@ -122,6 +124,7 @@ public class Cart {
             }
 
         }
+        EventLog.getInstance().logEvent(new Event("Items purchased with money."));
         return acc;
     }
 
