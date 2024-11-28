@@ -63,7 +63,38 @@ In this case X would be Food (menu items) that the user adds to Cart (Y).
 
 8. You can save the state of the application or load the state of the application by clicking the "Save" or "Load" buttons respectively. 
     - The state is saved to a JSON file that the terminal GUI also uses. 
-    - Loading the application reads from this saved JSON file and parses the data to the appropriate class objects. 
+    - Loading the application reads from this saved JSON file and parses the data to the appropriate class objects.
+
+## Phase 4: Task 2
+
+This is an example of the output of the event log when using the GUI or terminal of the application.
+
+Wed Nov 27 19:16:50 PST 2024
+Added Ice Capp.
+
+Wed Nov 27 19:16:52 PST 2024
+Added Coffee.
+
+Wed Nov 27 19:16:53 PST 2024
+Added Coffee.
+
+Wed Nov 27 19:16:55 PST 2024
+Added Coffee.
+
+Wed Nov 27 19:16:56 PST 2024
+Added Bagel.
+
+Wed Nov 27 19:16:57 PST 2024
+Removed Coffee.
+
+Wed Nov 27 19:17:07 PST 2024
+Items purchased with money.
+
+Wed Nov 27 19:17:12 PST 2024
+Items purchased with money.
+
+Wed Nov 27 19:17:14 PST 2024
+Items purchased with points.
 
 
 
