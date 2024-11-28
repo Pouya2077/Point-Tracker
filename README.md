@@ -96,5 +96,12 @@ Items purchased with money.
 Wed Nov 27 19:17:14 PST 2024
 Items purchased with points.
 
+## Phase 4: Task 3
+
+After reflecting on the UML diagram and my project as a whole there are a couple of refactoring changes I would make. 
+Firstly, there is a lot of coupling between the different classes in my diagram. Upon further analysis of this I would defintely reduce this by having RestaurantGUI extend the RestaurantApp and gain much of its methods and fields. This would significantly reduce the amount of fields that the RestaurantGUI would need and it can focus on holding and manipulating the button, panel, frame, and label fields. 
+
+Secondly, there is a lot of redundancy when it comes to the classes having fields. There are many places where a class needs a menu and has the same Food objects in a list. Instead I could have made this a static constant that could be used anywhere. Likewise, I could have refactored so that the ApplicationState is accessed when a method needs to be called on restaurant or cart since it holds them both. This way I would not need fields for Restaurant and Cart. 
+
 
 
