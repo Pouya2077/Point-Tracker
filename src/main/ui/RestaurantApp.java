@@ -369,6 +369,7 @@ public class RestaurantApp {
         new RestaurantApp();
     }
 
+    // EFFECTS: prints the entries of the EventLog to the console
     public static void printLog(EventLog el) {
         for (Event event : el) {
             System.out.println("\n" + event.toString() + "\n");
